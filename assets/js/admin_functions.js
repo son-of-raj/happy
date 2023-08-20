@@ -1903,7 +1903,7 @@ $.ajax({
 					if($.trim(res)=="success"){
 						swal({
 						 title: "Freelances Provider",
-						 text: "Provider Details Deleted SuccessFully....!",
+						 text: "Vendor Details Deleted SuccessFully....!",
 						 icon: "success",
 						 button: "okay",
 						 closeOnEsc: false,

@@ -1239,7 +1239,7 @@ public function image_resize($width = 0, $height = 0, $image_url, $filename,$upl
       
       $this->data['page'] = 'add_provider';
       $this->data['model'] = 'service';
-      $this->data['title'] = 'Add Provider';
+      $this->data['title'] = 'Add Vendor';
       
       $this->data['country'] = $this->service->country_code_details();
       $this->data['category'] = $this->service->get_category(); 

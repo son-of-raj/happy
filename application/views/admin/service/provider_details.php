@@ -11,7 +11,7 @@ $user_details = $this->db->where('id',$user_id)->get('providers')->row_array();
 		<div class="page-header">
 			<div class="row">
 				<div class="col">
-					<h3 class="page-title">Provider Details</h3>
+					<h3 class="page-title">Vendor Details</h3>
 				</div>
 			</div>
 		</div>

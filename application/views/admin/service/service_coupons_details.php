@@ -89,7 +89,7 @@ $lists  = $query->result_array();
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title d-flex justify-content-between">
-							<span>Provider Details</span>
+							<span>Vendor Details</span>
 						</h5>
 						<div class="row">
 							<p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Name</p>

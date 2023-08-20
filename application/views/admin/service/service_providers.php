@@ -102,7 +102,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Provider Name</th>
+                                        <th>Vendor Name</th>
                                         <th>Contact No</th>
                                         <th>Email</th>
                                         <th>Reg Date</th>
