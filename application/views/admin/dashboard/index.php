@@ -125,7 +125,7 @@ $map_key=settingValue('map_key');
 			<div class="col-md-6 d-flex">
 			
 				<!-- Recent Bookings -->
-				<!-- <div class="card card-table flex-fill">
+				<div class="card card-table flex-fill">
 					<div class="card-header">
 						<h4 class="card-title">Recent Bookings</h4>
 					</div>
@@ -203,7 +203,7 @@ $map_key=settingValue('map_key');
 							</table>
 						</div>
 					</div>
-				</div> -->
+				</div>
 				<!-- /Recent Bookings -->
 				
 			</div>
@@ -218,7 +218,7 @@ $map_key=settingValue('map_key');
 					$list_payments= $query->result_array();
 				?>
 				<!-- Payments -->
-				<!-- <div class="card card-table flex-fill">
+				<div class="card card-table flex-fill">
 					<div class="card-header">
 						<h4 class="card-title">Payments</h4>
 					</div>
@@ -288,11 +288,11 @@ $map_key=settingValue('map_key');
 							</table>
 						</div>
 					</div>
-				</div> -->
+				</div>
 			</div>
 		</div>
 		
-		<!-- <div class="row">
+		<div class="row">
 			<div class="col-md-12">
 				<div class="card provider-map">
 					<div class="card-header text-center">
@@ -310,7 +310,7 @@ $map_key=settingValue('map_key');
 					</div>
 				</div>
 			</div>
-		</div> -->
+		</div>
 	</div>          
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $map_key?>"></script>
