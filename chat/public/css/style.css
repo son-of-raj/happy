@@ -1,0 +1,107 @@
+body {
+  margin: 0 auto;
+}
+
+.starter-template {
+  padding: 5px;
+  text-align: center;
+}
+
+.chat_dialog1 {
+  width: 70%;
+  height: 120px;
+  border: 1px solid black;
+  text-align: left;
+  padding: 5px;
+  float: left;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.chat_dialog1 .priv_msg {
+  color: blue;
+  font-style: italic;
+}
+
+.user_list {
+  width: 20%;
+  height: 120px !important;
+  border: 1px solid black;
+  text-align: left;
+  padding: 5px;
+  float: left;
+}
+
+.clear {
+  clear: both;
+}
+
+.client_chat {
+  width: 94% !important;
+}
+
+.input-group.client {
+  width: 91% !important;
+}
+
+.connection_alert {
+  margin-top: 15px;
+  width: 90% !important;
+}
+
+.connection_alert .error_type::after {
+  content: ':';
+}
+
+.input-group-btn {
+  float: left;
+}
+
+.input-group-addon.name_bit {
+  font-weight: bold;
+}
+
+.client_chat.error {
+  background-color: #fce4e4;
+  border: 1px solid #c03;
+  outline: none;
+}
+
+.client_user_you {
+  font-weight: bold;
+  color: red;
+}
+.client_user_you:after {
+    content: ' (You) ';
+}
+
+ul.typing_indicator {
+  padding-left: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+ul.typing_indicator li {
+  padding: 0;
+  font-style: italic;
+  list-style-position: inside;
+  color: #b8acab;
+}
+.d-flex {
+    display: -ms-flexbox!important;
+    display: flex!important;
+}
+
+.mb-4, .my-4 {
+    margin-bottom: 1.5rem!important;
+}
+
+.justify-content-start {
+    -ms-flex-pack: start!important;
+    justify-content: flex-start!important;
+}
+.justify-content-end {
+    -ms-flex-pack: end!important;
+    justify-content: flex-end!important;
+}

@@ -1,0 +1,23 @@
+/*
+ * This is a CSS comment.
+ * which should be detected.
+ */
+
+.SettingsTabPaneWidgetType-tab-mid {
+   background: transparent url(tab_inact_mid.png) repeat-x;
+   line-height: -20px;
+   cursor: pointer;
+   -moz-user-select: none;
+}
+
+/*
+ * The above tests are based on "normal" tokens.
+ * The below test checks that once the tokenizer breaks down because of
+ * unexpected merge conflict boundaries, subsequent boundaries will still
+ * be detected correctly.
+ */
+
+/*
+ * This is a CSS comment.
+ * which should be detected.
+ */

@@ -1,0 +1,81 @@
+<div class="page-wrapper">
+	<div class="content container-fluid">
+	
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col">
+					<h3 class="page-title">State Code</h3>
+				</div>
+				<div class="col-auto text-end">
+					<div class="col-sm-4 text-end m-b-20">
+						<a href="<?php echo base_url().$theme . '/' . $model . '/create'; ?>" class="btn btn-white add-button"><i class="fas fa-plus"></i></a>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+		<?php
+			if ($this->session->userdata('message')) {
+				echo $this->session->userdata('message');
+			}
+			?>
+		<div class="card">
+				<div class="card-body">
+					<div class="table-responsive state-lists">
+						<table class="table table-striped table-actions-bar m-b-0 categories_table">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Country Code</th>									
+									<th>Country Name</th>
+									<th>State Name</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								if (!empty($lists)) {
+									$sno = 0;
+									foreach ($lists as $row) {
+										$_id = isset($row['id']) ? $row['id'] : '';
+										if (!empty($_id)) {
+											$country_code = isset($row['ccode']) ? $row['ccode'] : '';
+											$country_name = isset($row['cname']) ? $row['cname'] : '';
+											$state_name = isset($row['name']) ? $row['name'] : '';
+											
+								?>
+											<tr>
+												<td> <?php echo ++$sno; ?></td>
+												<td> <?php echo $country_code; ?></td>												
+												<td> <?php echo $country_name ?></td>
+												<td> <?php echo $state_name ?></td>
+												<td>
+													<a href="<?php echo base_url().'admin/state_code_config/edit/' . $_id; ?>" class="btn btn-sm bg-success-light me-2"><i class="far fa-edit me-1"></i> Edit</a>&nbsp;
+													<?php if($this->session->userdata('role') == 1) { ?>
+														<a href="javascript:;" class="on-default remove-row btn btn-sm bg-danger-light me-2 delete_state_code_config" id="Onremove_<?php echo $_id; ?>" data-id="<?php echo $_id; ?>"><i class="far fa-trash-alt me-1"></i> Delete</a>
+													<?php } ?>
+												</td>
+											</tr>
+									<?php
+										}
+									}
+								} else {
+									?>
+									<tr>
+										<td colspan="5">
+											<p class="text-danger text-center m-b-0">No Records Found</p>
+										</td>
+									</tr>
+								<?php } ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	</div>
+</div>

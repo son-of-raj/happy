@@ -1,0 +1,138 @@
+<div class="page-wrapper">
+			<div class="content container-fluid">
+				<div class="row">
+					<div class="col-xl-8 offset-xl-2">
+					
+						<!-- Page Header -->
+						<div class="page-header">
+							<div class="row">
+								<div class="col-sm-12">
+									<h3 class="page-title">Add Post</h3>
+								</div>
+							</div>
+						</div>
+						<!-- /Page Header -->
+						<form method="POST" id="add_blog" autocomplete="off" enctype="multipart/form-data">
+                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>"/>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="bank-inner-details">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <label>Title<span class="text-danger">*</span></label>
+                                                    <input type="text" name="title" class="form-control" >
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <label>Language</label>
+                                                    <select name="lang_id" class="form-control"  onchange="get_blog_categories_by_lang(this.value);">
+
+                                                        <?php foreach ($languages as $language): ?>
+                                                            <option value="<?php echo $language['id']; ?>" ><?php echo $language['language']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
+                                                </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group modal-select-box">
+                                                    <label>Category</label>
+                                                    <select class="select" name="category_id" id="categories">
+                                                        <option value="">Select Blog Category</option>
+                                                        <?php
+                                                         if($categories){
+                                                            foreach($categories as $category){ ?>
+                                                                <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                                                        <?php }
+                                                        } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label">Slug
+                                                        <small>(If you leave it empty, it will be generated automatically.)</small>
+                                                    </label>
+                                                    <input type="text" class="form-control" name="slug" placeholder="Slug"
+                                                        value="" >
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label">Description (Meta Tag)</label>
+                                                    <input type="text" class="form-control" name="summary"
+                                                        placeholder="Description (Meta Tag)" value="" >
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label">Keywords (Meta Tag)</label>
+                                                    <input type="text" class="form-control" name="keywords"
+                                                        placeholder="Keywords (Meta Tag)" value="" >
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <label>Tag</label>
+                                                    <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Enter Tags" name="tags">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <label>Blog Image</label>
+                                                    <div class="change-photo-btn">
+                                                        <input type="file" name="image">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <label>Description</label>
+                                                    <textarea id="editor" name="content" class="form-control content-textarea"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" blog-categories-btn pt-0">
+                                    <div class="bank-details-btn ">
+                                        <!-- <button type="submit" class="btn bank-cancel-btn me-2">Add Post</button> -->
+                                        <button type="submit" class="btn btn-primary btn-blog me-2">Add Post</button>
+                                        <!-- <a href="blog.html" class="btn bank-cancel-btn me-2">Add Post</a> -->
+                                    </div>
+                                </div>
+                            </div> 
+                        </form>
+						
+					</div>
+				</div>
+			</div>
+		</div> 
+        <!-- ckeditor JS -->
+	<script src="assets/js/ckeditor.js"></script>
+    <!-- Ckeditor CSS-->
+    <link rel="stylesheet" href="assets/css/ckeditor.css">
+    <script type="text/javascript">
+        
+        
+        //get blog categories
+function get_blog_categories_by_lang(val) { 
+    var base_url=$('#base_url').val();
+    var csrf_token=$('#admin_csrf').val();
+  var data = {
+      "lang_id": val
+  };
+  data["csrf_token_name"] = csrf_token;
+
+  $.ajax({
+      type: "POST",
+      url: base_url + "blogs/get_blog_categories_by_lang",
+      data: data,
+      success: function (response) {
+          $('#categories').children('option:not(:first)').remove();
+          $("#categories").append(response);
+      }
+  });
+}
+    </script>
