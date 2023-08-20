@@ -50,7 +50,7 @@ $result = $this->deposit->Start_End_Date_of_a_week($currentWeekNumber,$currentYe
 							<div class="form-group">
 								<label>Provider Name</label>
 								<select class="form-control select" name="username">
-									<option value="">Select provider name</option>
+									<option value="">Select Vendor name</option>
 									<?php foreach ($user_details as $user) { ?>
 									<option value="<?php echo $user['name']?>"><?php echo $user['name']?></option>
 									<?php } ?>

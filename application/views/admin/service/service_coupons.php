@@ -31,7 +31,7 @@
 							<div class="form-group">
 								<label>Provider Name</label>
 								<select class="form-control select" name="username">
-									<option value="">Select provider name</option>
+									<option value="">Select Vendor name</option>
 									<?php foreach ($user_details as $user) { ?>
 									<option value="<?php echo $user['id']?>"><?php echo $user['name']?></option>
 									<?php } ?>

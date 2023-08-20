@@ -28,7 +28,7 @@
 							<div class="form-group">
 								<label>Provider Name</label>
 								<select class="form-control select" name="provider_name" >
-									<option value="">Select provider name</option>
+									<option value="">Select Vendor name</option>
 									<?php foreach ($provider_list as $provider) { ?>
 									<option value="<?php echo $provider['id']?>"><?php echo $provider['name']?></option>
 									<?php } ?>

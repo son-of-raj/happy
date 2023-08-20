@@ -41,7 +41,7 @@ $usrbtntxt = 'Send to user';
                             <div class="form-group">
                                 <label>Select Provider<span class="text-danger">*</span></label>
                                 <select class="form-control select pro_change" name="username">
-                                <option value="">Select provider name</option>
+                                <option value="">Select Vendor name</option>
                                 <?php foreach ($provider_list as $providers) { ?>
                                 <?php if (!empty($providers->name)) { ?>
                                 <option value="<?=$providers->id?>" id='test' data-id="<?=$providers->id?>"><?php echo (!empty($providers->name))?$providers->name:''?></option>

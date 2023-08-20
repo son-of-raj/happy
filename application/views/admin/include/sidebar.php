@@ -113,7 +113,7 @@
 						} if(in_array(12,$access_result_data_array)) {
 						?>
 						<li>
-							<a class="<?php echo ($page == 'service-providers')?'active':''; echo ($page == 'add-provider')?'active':''; echo ($page == 'provider-details')?'active':''; echo ($page == 'edit-provider' && $arg == 1)?'active':'';?>" href="<?php echo $base_url; ?>service-providers"> <span> Service Providers</span></a>
+							<a class="<?php echo ($page == 'service-providers')?'active':''; echo ($page == 'add-provider')?'active':''; echo ($page == 'provider-details')?'active':''; echo ($page == 'edit-provider' && $arg == 1)?'active':'';?>" href="<?php echo $base_url; ?>service-providers"> <span> Vendors</span></a>
 						</li>
 						<?php
 						}

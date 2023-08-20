@@ -8,7 +8,7 @@
 		<div class="page-header">
 			<div class="row">
 				<div class="col">
-					<h3 class="page-title">Service Providers</h3>
+					<h3 class="page-title">Vendors</h3>
 				</div>
 				<div class="col-auto text-end">
 					<a class="btn btn-white filter-btn me-3" href="javascript:void(0);" id="filter_search">
@@ -37,7 +37,7 @@
 							<div class="form-group">
 								<label>Provider Name</label>
 								<select class="form-control select" name="username">
-									<option value="">Select provider name</option>
+									<option value="">Select Vendor name</option>
 									<?php foreach ($user_details as $user) { ?>
 									<option value="<?php echo $user['name']?>"><?php echo $user['name']?></option>
 									<?php } ?>
