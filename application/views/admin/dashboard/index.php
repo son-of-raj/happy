@@ -76,7 +76,7 @@ $map_key=settingValue('map_key');
 								}
 								if(!empty($providers_count)){ echo $providers_count;}else{ echo "0"; } ?>
 								</h3>
-								<h6 class="text-muted">Providers</h6>
+								<h6 class="text-muted">Vendors</h6>
 							</div>
 						</div>
 					</div>
