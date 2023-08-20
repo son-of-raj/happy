@@ -16,7 +16,7 @@ class Appointment extends CI_Controller {
         $this->data['module'] = 'appointment';
         $this->data['page'] = '';
 		
-		$this->site_name ='Craftesty';
+		$this->site_name ='Happy Ceremonies';
         $this->data['base_url'] = base_url();
 		
         $this->session->keep_flashdata('error_message');

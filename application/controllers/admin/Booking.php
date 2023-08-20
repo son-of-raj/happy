@@ -15,7 +15,7 @@ class Booking extends CI_Controller {
         $this->load->model('Booking_report_model','book');
 		$this->load->model('common_model','common_model');
 		$this->load->model('templates_model');
-		$this->site_name ='Craftesty';
+		$this->site_name ='Happy Ceremonies';
 
         $this->data['theme'] = 'admin';
         $this->data['model'] = 'bookings';

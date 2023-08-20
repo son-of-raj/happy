@@ -22,7 +22,7 @@ class Booking extends CI_Controller {
 
         $this->load->model('booking_model', 'booking');
         $this->load->model('api_model', 'api');
-		$this->site_name ='Craftesty';
+		$this->site_name ='Happy Ceremonies';
         $this->load->model('templates_model');
 
         $this->load->helper('user_timezone_helper');

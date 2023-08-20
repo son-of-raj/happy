@@ -22,7 +22,7 @@ $query = $this->db->query("select * from system_settings WHERE status = 1");
 $result = $query->result_array();
 $contact_details = "367 Hillcrest Lane, Irvine, California, United States";
 $mobile_number = "+21 895 158 6545";
-$smtp_email_address = "craftesty@example.com";
+$smtp_email_address = "Happy Ceremonies@example.com";
 
 $contact_us = $this->db->select('address, phone, email, widget_showhide,page_title')->get_where('footer_submenu', array('widget_name'=>'contact-widget'))->row();
 

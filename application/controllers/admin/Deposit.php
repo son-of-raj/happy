@@ -139,7 +139,7 @@ class Deposit extends CI_Controller {
 				}
 			  }
 			  
-			  $subject = 'Deposit History Details from Craftesty';
+			  $subject = 'Deposit History Details from Happy Ceremonies';
 			  $content = '<div align="center" style="font-weight:bold;font-size:18px";>Deposit History</div><br>';
 			  $content .= '<div><span style="font-weight:bold;">Name:&nbsp;</span>'.$rec['name'].'</div><br>';
 			  $content .= '<div><span style="font-weight:bold;">Deposit Amount:&nbsp;</span>'.$dep['amount'].'SAR</div><br>';
