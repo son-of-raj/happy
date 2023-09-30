@@ -301,9 +301,9 @@
 				</li>
 				<?php }?>
 				<?php if(in_array(50,$access_result_data_array)) { ?>
-					<li class="<?php echo ($page == 'reward-system' || $page == 'reward-system-details')?'active':'';?>">
+					<!-- <li class="<?php echo ($page == 'reward-system' || $page == 'reward-system-details')?'active':'';?>">
 						<a href="<?php echo $base_url; ?>reward-system"> <i class="fas fa-coins"></i> <span>Rewards</span></a>
-					</li>
+					</li> -->
 				<?php } ?>
 				<?php if(in_array(36,$access_result_data_array)) { ?>
 				<li class="<?php echo ($active == 'chat')?'active':'';?>">

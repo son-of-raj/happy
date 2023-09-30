@@ -77,7 +77,7 @@ $availability_details = json_decode($business_hours['availability'],true);
 								</div>
 							</div>
 							<div class="service-amount">
-								<span>$<?php echo $service_details['service_amount']?></span>
+								<span><?php echo currency_code_sign(settings('currency')).''.$service_details['service_amount']; ?></span>
 							</div>
 						</div>
 						<div class="service-description">

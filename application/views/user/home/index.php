@@ -59,7 +59,7 @@ $noshops = (!empty($user_language[$user_selected]['lg_No_Shops_Found'])) ? $user
 <section class="hero-section" style="background-image: url('<?php echo $bgimg;?>');">
     <div class="container">
         <div class="row">
-            <div class="col-lg-7 col-sm-12 col-12">
+            <div class="col-lg-12 col-sm-12 col-12">
                 <div class="banner-head">
 				   <h3><?php echo $banner_content; ?></h3>
 				   <h2><?php echo $banner_sub_content; ?></h2>						

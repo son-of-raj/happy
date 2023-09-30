@@ -147,7 +147,7 @@ label {
 .search-cat span {
 	float: none;
 	display: inline-block;
-	color: #000;
+	color: #ffffff;
 	font-size: 18px;
 	line-height: 29px;
 	margin-right: 25px;
@@ -162,12 +162,12 @@ label {
 }
 .search-cat a {
 	display: inline-block;
-	color: #002678;
+	color: #ffffff;
 	border: 1px dashed #fff;
 	border-radius: 25px;
 	margin: 0 5px;
 	opacity: 0.8;
-	background: rgba(255,255,255,0.5);
+	background: rgba(0, 0, 0, 0.5);
 	padding: 5px 10px;
 	border-radius: 5px;
 	font-size: 13px;
@@ -5380,13 +5380,13 @@ ul.breadcrumbs {
 	font-size: 46px;
 	margin-bottom: 0;
 	font-weight: 400;
-	color: #002678;
+	color: #FFFFFF;
 }
 
 .banner-head h2 {
 	font-size: 46px;
 	margin-bottom: 35px;
-	color: #002678;
+	color: #FFFFFF;
 }
 
 .banner-head h2 span {
