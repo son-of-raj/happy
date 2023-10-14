@@ -133,9 +133,9 @@ $usrbtntxt = 'Send to user';
                                     <div class="input-group">
                                       <input type="text" class="form-control" name="duration" id="duration" required>
                                       <div class="input-group-append">
-                                        <span class="input-group-text" id="basic-addon2">min(s)</span>
+                                        <span class="input-group-text" id="basic-addon2">hr(s)</span>
                                       </div>
-                                      <input type="hidden" class="form-control" name="duration_in" id="duration_in" value="min(s)">
+                                      <input type="hidden" class="form-control" name="duration_in" id="duration_in" value="hr(s)">
                                     </div>
                                     
                                 </div>
@@ -163,7 +163,7 @@ $usrbtntxt = 'Send to user';
                                 <div class="col-lg-3">
                                     <div class="form-group">     
                                         <label>Duration </label>
-                                        <input type="hidden" id="durintxt" value="min(s)" />
+                                        <input type="hidden" id="durintxt" value="hr(s)" />
                                     </div> 
                                 </div>
                                 

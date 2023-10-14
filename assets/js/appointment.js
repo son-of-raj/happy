@@ -615,7 +615,7 @@ $(document).on('change', '.guestservice', function() {
 			var duration    = $("#guest_serdur"+id).val();
 			var idval = "guest_sertime"+id;
 			$('#'+idval).empty();
-			load_staff_availability(date, provider_id, service_id,staff_id, shopid, "min(s)", duration, pptype, idval)
+			load_staff_availability(date, provider_id, service_id,staff_id, shopid, "hr(s)", duration, pptype, idval)
 		}
 	} else {
 		$('#guest_serstf'+id).empty();
@@ -639,7 +639,7 @@ $(document).on('change', '.gstaff', function() {
 		var staff_id    = $('#guest_serstf'+id).val();
 		var duration    = $("#guest_serdur"+id).val();
 		$('#'+idval).empty();
-		load_staff_availability(date, provider_id, service_id,staff_id, shop_id, "min(s)", duration, pptype, idval)
+		load_staff_availability(date, provider_id, service_id,staff_id, shop_id, "hr(s)", duration, pptype, idval)
 	} else{
 		$('#'+idval).empty();
 		$('#guest_sertime'+id).empty();

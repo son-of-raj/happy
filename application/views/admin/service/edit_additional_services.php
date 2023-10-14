@@ -42,7 +42,7 @@
                                 <div class="input-group">
 								  <input type="text" class="form-control spldetail " name="duration" value="<?php echo $services['duration'];?>">
 								  <div class="input-group-append">
-									<span class="input-group-text" id="basic-addon2">min(s)</span>
+									<span class="input-group-text" id="basic-addon2">hr(s)</span>
 								  </div>								 
 								</div>
                             </div>

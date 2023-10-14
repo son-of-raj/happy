@@ -49,7 +49,7 @@ CREATE TABLE `additional_services` (
   `service_name` varchar(500) NOT NULL,
   `amount` float NOT NULL,
   `duration` int(11) NOT NULL,
-  `duration_in` varchar(20) NOT NULL DEFAULT 'min(s)',
+  `duration_in` varchar(20) NOT NULL DEFAULT 'hr(s)',
   `notes` text DEFAULT NULL,
   `additional_service_image` text DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT 1 COMMENT '0-delete,1-active,2-inactive',
@@ -62,7 +62,7 @@ CREATE TABLE `additional_services` (
 --
 
 INSERT INTO `additional_services` (`id`, `provider_id`, `service_id`, `service_name`, `amount`, `duration`, `duration_in`, `notes`, `additional_service_image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 'Light', 0, 180, 'min(s)', NULL, NULL, 1, '2023-08-24 23:15:57', '2023-08-24 23:15:57');
+(1, 1, 2, 'Light', 0, 180, 'hr(s)', NULL, NULL, 1, '2023-08-24 23:15:57', '2023-08-24 23:15:57');
 
 -- --------------------------------------------------------
 
@@ -49971,7 +49971,7 @@ CREATE TABLE `employee_services_list` (
   `service_offered` text NOT NULL,
   `labour_charge` decimal(10,2) NOT NULL,
   `duration` int(11) NOT NULL,
-  `duration_in` varchar(20) NOT NULL DEFAULT 'min(s)',
+  `duration_in` varchar(20) NOT NULL DEFAULT 'hr(s)',
   `remarks` text NOT NULL,
   `delete_status` int(11) NOT NULL DEFAULT 0 COMMENT '1-delete,0-not delete'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -50364,7 +50364,7 @@ INSERT INTO `language_management` (`sno`, `lang_key`, `lang_value`, `language`, 
 (793, 'lg_Specialization_Description', 'Specialization Description', 'en', 'web'),
 (794, 'lg_AddMore_Specialization', 'Add More Specialization', 'en', 'web'),
 (795, 'lg_Willing_to_do_home_service', 'Willing to do home service?', 'en', 'web'),
-(796, 'lg_mins', 'min(s)', 'en', 'web'),
+(796, 'lg_mins', 'hr(s)', 'en', 'web'),
 (797, 'lg_My_Staffs', 'My Staffs', 'en', 'web'),
 (798, 'lg_Action', 'Action', 'en', 'web'),
 (799, 'lg_Ratings', 'Ratings', 'en', 'web'),
@@ -51575,7 +51575,7 @@ CREATE TABLE `services` (
   `thumb_image` text NOT NULL,
   `mobile_image` text NOT NULL,
   `duration` int(11) NOT NULL,
-  `duration_in` varchar(20) NOT NULL DEFAULT 'min(s)',
+  `duration_in` varchar(20) NOT NULL DEFAULT 'hr(s)',
   `autoschedule` int(1) NOT NULL DEFAULT 0 COMMENT '1->yes,2->no',
   `autoschedule_days` int(11) NOT NULL,
   `autoschedule_session` int(11) NOT NULL,
@@ -51597,8 +51597,8 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `user_id`, `service_title`, `currency_code`, `service_sub_title`, `service_amount`, `category`, `subcategory`, `sub_subcategory`, `about`, `shop_id`, `staff_id`, `service_offered`, `service_location`, `service_latitude`, `service_longitude`, `service_image`, `service_details_image`, `thumb_image`, `mobile_image`, `duration`, `duration_in`, `autoschedule`, `autoschedule_days`, `autoschedule_session`, `service_for`, `service_for_userid`, `status`, `total_views`, `rating`, `rating_count`, `admin_verification`, `created_at`, `updated_at`, `deleted_reason`, `created_by`) VALUES
-(1, 1, 'Model Photoshoot', 'INR', '', 200, '1', '', '', 'NA', '1', '1', '[\"\"]', 'Bhadravathi', '', '', '', '', '', '', 180, 'min(s)', 0, 0, 0, 0, 0, 1, 12, '', '', NULL, '2023-08-19 13:09:44', '2023-08-19 13:21:01', '', 'provider'),
-(2, 1, 'Kids Photography', 'INR', '', 2000, '1', '', '', 'NA', '1', '1', '[\"\"]', 'Bhadravathi', '', '', '', '', '', '', 100, 'min(s)', 0, 0, 0, 0, 0, 1, 23, '', '', NULL, '2023-08-19 13:35:32', '2023-08-24 23:15:57', '', 'provider');
+(1, 1, 'Model Photoshoot', 'INR', '', 200, '1', '', '', 'NA', '1', '1', '[\"\"]', 'Bhadravathi', '', '', '', '', '', '', 180, 'hr(s)', 0, 0, 0, 0, 0, 1, 12, '', '', NULL, '2023-08-19 13:09:44', '2023-08-19 13:21:01', '', 'provider'),
+(2, 1, 'Kids Photography', 'INR', '', 2000, '1', '', '', 'NA', '1', '1', '[\"\"]', 'Bhadravathi', '', '', '', '', '', '', 100, 'hr(s)', 0, 0, 0, 0, 0, 1, 23, '', '', NULL, '2023-08-19 13:35:32', '2023-08-24 23:15:57', '', 'provider');
 
 -- --------------------------------------------------------
 

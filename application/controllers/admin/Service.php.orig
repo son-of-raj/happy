@@ -717,7 +717,7 @@ public function add_additional_services() {
 		$table_data['amount'] = $this->input->post('amount');
 		$table_data['duration'] = $this->input->post('duration');
 		$table_data['notes'] = $this->input->post('notes');
-		$table_data['duration_in'] = 'min(s)';
+		$table_data['duration_in'] = 'hr(s)';
 		$table_data['created_at'] = date('Y-m-d H:i:s');
 		$table_data['status'] = $this->input->post('status');
 		if ($this->db->insert('additional_services', $table_data)) {
@@ -774,7 +774,7 @@ public function edit_additional_services($id)
 			$table_data['amount'] = $this->input->post('amount');
 			$table_data['duration'] = $this->input->post('duration');
 			$table_data['notes'] = $this->input->post('notes');
-			$table_data['duration_in'] = 'min(s)';
+			$table_data['duration_in'] = 'hr(s)';
 			$table_data['updated_at'] = date('Y-m-d H:i:s');
 			$table_data['status'] = $this->input->post('status');
             $this->db->where('id', $id);

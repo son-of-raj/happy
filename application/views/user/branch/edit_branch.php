@@ -232,7 +232,7 @@ $branch_image = $this->branch->branch_image($branch_id);
 													<input type="text" class="form-control shp_spldetail dur1" name="duration[<?php echo $k;?>][]" value="<?php echo $val['duration']; ?>" onkeypress="return validatenumerics(event);">												
 													<select class="form-control select dur2"  name="duration_in[<?php echo $k;?>][]">
 														<option value="hr(s)" <?php echo ($val['duration_in']=='hr(s)')?'selected':''; ?>>Hour(s)</option>
-														<option value="min(s)" <?php echo ($val['duration_in']=='min(s)')?'selected':''; ?>>Minutes(s)</option>
+														<option value="hr(s)" <?php echo ($val['duration_in']=='hr(s)')?'selected':''; ?>>Minutes(s)</option>
 													</select>
 												</td>
 												<td><input type="text" class="form-control shp_spldetail" name="price[<?php echo $k;?>][]" value="<?php echo $val['labour_charge']; ?>" onkeypress="return validatenumerics(event);"> &nbsp;<span class="errmsgprice"></span><input type="hidden" class="form-control" name="actiontype[<?php echo $k;?>][]" value="<?php echo $val['id']."_update"; ?>" >													

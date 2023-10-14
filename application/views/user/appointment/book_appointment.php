@@ -74,7 +74,7 @@ $card_service_amount = ($total_payable) * 100;
 
 // Shop and Staff Details
 $stfarr = explode(",",$service_details['staff_id']);
-$stfres = $this->db->select('id, first_name AS name, home_service, designation, shop_service, home_service_area')->where_in('id',$stfarr)->where('provider_id',$service_details['user_id'])->where('status',1)->where('delete_status',0)->from('employee_basic_details')->order_by('first_name','ASC')->get()->result_array();
+$stfres = $this->db->select('id, first_name AS name, home_service, designation, shop_service, home_service_area')->where_in('id',$stfarr)->where('provider_id',$service_details['user_id'])->where('status',1)->where('delete_status',0)->from('employee_basic_details')->order_by('id','DESC')->limit(1)->get()->result_array();
 
 $shparr = explode(",",$service_details['shop_id']);
 $shpres = $this->db->select('id, shop_name, shop_location')->where_in('id',$shparr)->where('provider_id',$service_details['user_id'])->where('status',1)->from('shops')->get()->result_array();
@@ -223,20 +223,6 @@ $ofetime = ($offers['end_time'])?$offers['end_time']:$offerqry['end_time'];
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
-										<label><?php echo (!empty($user_language[$user_selected]['lg_Do_You_Want_the_Service'])) ? $user_language[$user_selected]['lg_Do_You_Want_the_Service'] : $default_language['en']['lg_Do_You_Want_the_Service']; ?> <span class="text-danger">*</span></label><br>
-										<div>									
-											<label class="radio-inline"><input class="serviceat"  type="radio" name="service_at" value="2" checked> <?php echo (!empty($user_language[$user_selected]['lg_At_Shop'])) ? $user_language[$user_selected]['lg_At_Shop'] : $default_language['en']['lg_At_Shop']; ?> </label>
-											<label class="radio-inline"><input class="serviceat"  type="radio" name="service_at" value="1"> <?php echo (!empty($user_language[$user_selected]['lg_At_Home'])) ? $user_language[$user_selected]['lg_At_Home'] : $default_language['en']['lg_At_Home']; ?></label>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-							
-							
-							<div class="row">
-								<div class="col-lg-12">
-									<div class="form-group">
 										<label><span class="locationtitle"><?php echo (!empty($user_language[$user_selected]['lg_Location'])) ? $user_language[$user_selected]['lg_Location'] : $default_language['en']['lg_Location']; ?></span> <span class="text-danger">*</span></label>
 
 										<?php if($location=="") { ?>
@@ -252,27 +238,14 @@ $ofetime = ($offers['end_time'])?$offers['end_time']:$offerqry['end_time'];
 									</div>
 									<div id="map" class="d-none"></div>                           
 								</div>
-								<div class="col-lg-6">
-									<div class="form-group">
-										<label><?php echo (!empty($user_language[$user_selected]['lg_Staff'])) ? $user_language[$user_selected]['lg_Staff'] : $default_language['en']['lg_Staff']; ?><span class="text-danger">*</span></label><br>
-										<div>									
-											<select id="staff_id" name="staff_id" class="form-control select ">
-												<option value=""><?php echo (!empty($user_language[$user_selected]['lg_Select_Staff'])) ? $user_language[$user_selected]['lg_Select_Staff'] : $default_language['en']['lg_Select_Staff']; ?></option>
-												<?php  foreach($stfres as $val) { 
-														if($val['shop_service'] == 1 && $val['home_service'] == 2){
-															$homeservice = 2; // Shop & Home
-														} else if($val['shop_service'] == 0 && $val['home_service'] == 2){
-															$homeservice = 1; // Only Home
-														} else {
-															$homeservice = 0; // Only Shop
-														}
-												?>
-													<option value="<?php echo $val['id']; ?>" data-homeservice="<?php echo $homeservice;?>" data-homeservicearea="<?php echo $val['home_service_area'];?>"><?php echo ucwords($val['name']); ?></option>
-												<?php }  ?>
-											</select>
-										</div>
-									</div>
-								</div>
+								<input class="serviceat"  type="radio" name="service_at" value="2" hidden checked>
+								
+							</div>
+							
+							
+							<div class="row">
+								
+								<input type="hidden" id="staff_id" name="staff_id" value= "<?php echo $stfres[0]['id']; ?>">
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label><?php echo (!empty($user_language[$user_selected]['lg_Service_Amount'])) ? $user_language[$user_selected]['lg_Service_Amount'] : $default_language['en']['lg_Service_Amount']; ?></label>
@@ -442,7 +415,7 @@ $ofetime = ($offers['end_time'])?$offers['end_time']:$offerqry['end_time'];
 															<div class="input-group-append">
 																<span class="input-group-text" id="basic-addon2"><?php echo (!empty($user_language[$user_selected]['lg_mins'])) ? $user_language[$user_selected]['lg_mins'] : $default_language['en']['lg_mins']; ?></span>
 															</div>
-															<input type="hidden" class="form-control" name="duration_in" id="duration_in" value="min(s)">
+															<input type="hidden" class="form-control" name="duration_in" id="duration_in" value="hr(s)">
 														</div>
 													</div>
 												</div>

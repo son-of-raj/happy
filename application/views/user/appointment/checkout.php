@@ -40,7 +40,7 @@ if($this->session->userdata('coupon_amount')) {
 	$total_payable = $this->session->userdata('coupon_amount')+$homefee+1;
 	
 } else {
-	$total_payable = $this->session->userdata('amount') + $homefee;
+	$total_payable = $this->session->userdata('amount') + $total_amt + $homefee;
 }
 //  else {
 // 	$total_payable = $total_amt + $homefee; // Total Payable

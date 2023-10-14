@@ -1,0 +1,35 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2023-10-14 14:17:43 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:19:29 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:23:15 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:25:44 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:26:02 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:26:08 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:27:09 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:28:07 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:28:12 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:28:28 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:28:58 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:29:23 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:30:29 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:30:51 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:31:59 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:32:10 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:32:41 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:38:05 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:39:32 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:39:33 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:40:18 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:42:04 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:42:47 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:43:45 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:44:59 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:45:27 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:45:54 --> 404 Page Not Found: Assets/js
+ERROR - 2023-10-14 14:50:07 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:50:08 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:50:44 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:50:47 --> 404 Page Not Found: Uploads/services
+ERROR - 2023-10-14 14:51:33 --> 404 Page Not Found: Assets/img
+ERROR - 2023-10-14 14:51:35 --> 404 Page Not Found: Uploads/services

@@ -417,7 +417,7 @@ $sesdatetxt = (!empty($this->user_language[$this->user_selected]['lg_Session_Dat
 								<span><?php echo (!empty($user_language[$user_selected]['lg_Booking_time'])) ? $user_language[$user_selected]['lg_Booking_time'] : $default_language['en']['lg_Booking_time']; ?></span><?php echo  $b['from_time'] ?> - <?php echo  $b['to_time'] ?> 								
 							</li>
 							<li>
-								<span><?php echo (!empty($user_language[$user_selected]['lg_Duration'])) ? $user_language[$user_selected]['lg_Duration'] : $default_language['en']['lg_Duration']; ?></span><?php echo  $duration." min(s)"; ?> 								
+								<span><?php echo (!empty($user_language[$user_selected]['lg_Duration'])) ? $user_language[$user_selected]['lg_Duration'] : $default_language['en']['lg_Duration']; ?></span><?php echo  $duration." hr(s)"; ?> 								
 							</li>
 							<li>
 								<span><?php echo (!empty($user_language[$user_selected]['lg_Amount'])) ? $user_language[$user_selected]['lg_Amount'] : $default_language['en']['lg_Amount']; ?></span><?php echo  currency_conversion($user_currency_code) . $b['amount']; ?> 								

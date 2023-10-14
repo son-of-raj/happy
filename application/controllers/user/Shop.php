@@ -424,7 +424,7 @@ class Shop extends CI_Controller {
 						'service_offer_name'  => implode("", $post['stitle'][$key]),
 						'labour_charge'    => implode("", $post['samount'][$key]),
 						'duration'         => implode("", $post['sduration'][$key]),
-						'duration_in'	   => 'min(s)',
+						'duration_in'	   => 'hr(s)',
 					); 
 					$offerid[] = implode("", $post['subsubcateid'][$key]);
 					$this->db->insert('shop_services_list',$insert); 
@@ -662,7 +662,7 @@ class Shop extends CI_Controller {
 						'service_offer_name'  => implode("", $post['stitle'][$key]),
 						'labour_charge'    => implode("", $post['samount'][$key]),
 						'duration'         => implode("", $post['sduration'][$key]),
-						'duration_in'	   => 'min(s)',
+						'duration_in'	   => 'hr(s)',
 					); 	
 					
 					$this->db->insert('shop_services_list',$insert);

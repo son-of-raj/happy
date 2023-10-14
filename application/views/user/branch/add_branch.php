@@ -206,7 +206,7 @@ $defaultcurrencysymbol = currency_code_sign($user_currency_code);
 												</select>
 												</td>
 												<td colspan="2"><input type="text" class="form-control shp_spldetail dur1" name="duration[0][]" value="" onkeypress="return validatenumerics(event);">
-												<select class="form-control select dur2"  name="duration_in[0][]"><option value="hr(s)">Hour(s)</option><option value="min(s)">Minutes(s)</option></select>
+												<select class="form-control select dur2"  name="duration_in[0][]"><option value="hr(s)">Hour(s)</option><option value="hr(s)">Minutes(s)</option></select>
 												</td>
 												<td><input type="text" class="form-control shp_spldetail" name="price[0][]" value="" onkeypress="return validatenumerics(event);"> &nbsp;<span class="errmsgprice"></span>		
 											<input type="hidden" class="form-control" name="actiontype[0][]" value="0_insert" >	  	</td>

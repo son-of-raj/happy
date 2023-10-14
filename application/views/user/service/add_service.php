@@ -156,7 +156,7 @@ $usrbtntxt = (!empty($user_language[$user_selected]['lg_Send_To_User'])) ? $user
 									  <div class="input-group-append">
 										<span class="input-group-text" id="basic-addon2"><?php echo (!empty($user_language[$user_selected]['lg_mins'])) ? $user_language[$user_selected]['lg_mins'] : $default_language['en']['lg_mins']; ?></span>
 									  </div>
-									  <input type="hidden" class="form-control" name="duration_in" id="duration_in" value="min(s)">
+									  <input type="hidden" class="form-control" name="duration_in" id="duration_in" value="hr(s)">
 									</div>
 									
                                 </div>
