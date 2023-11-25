@@ -12,3 +12,4 @@ Notes:
     while booking selection of staff should not be there.
     while adding listing, staff should be non mandatory(if not selected then booking will go to directly vendor)
     Staff should be renamed to manager.
+    if that slot is already booked by another user, those slots of that date is not visible to others
