@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2023 at 08:30 AM
+-- Generation Time: Nov 20, 2023 at 04:20 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -62,7 +62,7 @@ CREATE TABLE `additional_services` (
 --
 
 INSERT INTO `additional_services` (`id`, `provider_id`, `service_id`, `service_name`, `amount`, `duration`, `duration_in`, `notes`, `additional_service_image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 'Light', 0, 180, 'hr(s)', NULL, NULL, 1, '2023-08-24 23:15:57', '2023-08-24 23:15:57');
+(1, 1, 2, 'Light', 0, 180, 'hr(s)', NULL, NULL, 1, '2023-11-12 14:14:32', '2023-11-12 14:14:32');
 
 -- --------------------------------------------------------
 
@@ -1403,7 +1403,7 @@ CREATE TABLE `business_hours` (
 --
 
 INSERT INTO `business_hours` (`id`, `provider_id`, `all_days`, `availability`) VALUES
-(1, '1', 1, '[{\"day\":1,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":2,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":3,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":4,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":5,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":6,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":7,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"}]');
+(1, '1', 1, '[{\"day\":1,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":2,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":3,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":4,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":5,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":6,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":7,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"}]');
 
 -- --------------------------------------------------------
 
@@ -49956,7 +49956,7 @@ CREATE TABLE `employee_basic_details` (
 --
 
 INSERT INTO `employee_basic_details` (`id`, `provider_id`, `first_name`, `last_name`, `country_code`, `contact_no`, `email`, `password`, `dob`, `gender`, `profile_img`, `address`, `country`, `state`, `city`, `postal_code`, `emp_token`, `shop_id`, `category`, `subcategory`, `sub_subcategory`, `designation`, `experience`, `exp_month`, `about_emp`, `all_days`, `availability`, `shop_service`, `home_service`, `home_service_area`, `status`, `delete_status`, `created_by`, `created_at`, `updated_at`, `last_login`, `last_logout`, `is_online`) VALUES
-(1, 1, 'Akash', ' ', '', '8904589390', 'akashgr64@gmail.com', '', '1995-06-25', 'Male', '', '', 0, 0, 0, 0, '1BpiFpMbLNIUigg', 1, 0, 0, '', '', '', 0, 'Professional photographers', 1, '[{\"day\":1,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":2,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":3,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":4,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":5,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":6,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":7,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"}]', 1, 0, '', 1, 0, 1, '2023-08-19 13:06:07', '2023-08-19 13:07:38', '0000-00-00 00:00:00', NULL, 2);
+(1, 1, 'Akash', ' ', '', '8904589390', 'akashgr64@gmail.com', '', '1995-06-25', 'Male', '', '', 0, 0, 0, 0, '1BpiFpMbLNIUigg', 1, 0, 0, '', '', '', 0, 'Professional photographers', 1, '[{\"day\":1,\"from_time\":\"00:30  AM\",\"to_time\":\"11:30 PM\"},{\"day\":2,\"from_time\":\"00:30  AM\",\"to_time\":\"11:30 PM\"},{\"day\":3,\"from_time\":\"00:30  AM\",\"to_time\":\"11:30 PM\"},{\"day\":4,\"from_time\":\"00:30  AM\",\"to_time\":\"11:30 PM\"},{\"day\":5,\"from_time\":\"00:30  AM\",\"to_time\":\"11:30 PM\"},{\"day\":6,\"from_time\":\"00:30  AM\",\"to_time\":\"11:30 PM\"},{\"day\":7,\"from_time\":\"00:30  AM\",\"to_time\":\"11:30 PM\"}]', 1, 0, '', 1, 0, 1, '2023-08-19 13:06:07', '2023-11-12 14:43:13', '0000-00-00 00:00:00', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -51320,7 +51320,7 @@ CREATE TABLE `providers` (
 --
 
 INSERT INTO `providers` (`id`, `name`, `email`, `password`, `mobileno`, `country_code`, `currency_code`, `share_code`, `category`, `subcategory`, `profile_img`, `commercial_reg_image`, `token`, `dob`, `otp`, `account_holder_name`, `account_number`, `account_iban`, `bank_name`, `bank_address`, `sort_code`, `routing_number`, `account_ifsc`, `created_at`, `updated_at`, `status`, `delete_status`, `usertype`, `type`, `pwd`, `last_login`, `last_logout`, `is_agree`, `is_online`, `qrcode_path`, `homeservice_fee`, `homeservice_arrival`, `allow_rewards`, `booking_reward_count`, `commercial_verify`) VALUES
-(1, 'Akash Photography', 'akashgr64@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '8904589390', '91', 'INR', NULL, 0, 0, '', 'uploads/commercial_reg_image/1692429327sample.pdf', '', '1995-06-25', '', 'Akash GR', '7878787878787878', 'HDFC12345', 'HDFC', 'Bhadravathi', '', '', 'HDFC12345', '2023-08-19 12:37:28', '2023-08-19 14:39:22', 1, '0', '', 1, '', '2023-08-24 23:12:47', '2023-08-19 14:39:06', NULL, 1, '', 0, 40, 0, 0, 2),
+(1, 'Akash Photography', 'akashgr64@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '8904589390', '91', 'INR', NULL, 0, 0, '', 'uploads/commercial_reg_image/1692429327sample.pdf', '', '1995-06-25', '', 'Akash GR', '7878787878787878', 'HDFC12345', 'HDFC', 'Bhadravathi', '', '', 'HDFC12345', '2023-08-19 12:37:28', '2023-08-19 14:39:22', 1, '0', '', 1, '', '2023-11-12 14:09:39', '2023-08-19 14:39:06', NULL, 1, '', 0, 40, 0, 0, 2),
 (2, 'vendor1@example.com', 'vendor1@example.com', 'e10adc3949ba59abbe56e057f20f883e', '9999999999', '91', NULL, NULL, 0, 0, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '2023-08-20 21:05:10', '0000-00-00 00:00:00', 1, '0', '', 1, '', '2023-08-20 21:07:07', NULL, NULL, 1, '', 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
@@ -51597,8 +51597,9 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `user_id`, `service_title`, `currency_code`, `service_sub_title`, `service_amount`, `category`, `subcategory`, `sub_subcategory`, `about`, `shop_id`, `staff_id`, `service_offered`, `service_location`, `service_latitude`, `service_longitude`, `service_image`, `service_details_image`, `thumb_image`, `mobile_image`, `duration`, `duration_in`, `autoschedule`, `autoschedule_days`, `autoschedule_session`, `service_for`, `service_for_userid`, `status`, `total_views`, `rating`, `rating_count`, `admin_verification`, `created_at`, `updated_at`, `deleted_reason`, `created_by`) VALUES
-(1, 1, 'Model Photoshoot', 'INR', '', 200, '1', '', '', 'NA', '1', '1', '[\"\"]', 'Bhadravathi', '', '', '', '', '', '', 180, 'hr(s)', 0, 0, 0, 0, 0, 1, 12, '', '', NULL, '2023-08-19 13:09:44', '2023-08-19 13:21:01', '', 'provider'),
-(2, 1, 'Kids Photography', 'INR', '', 2000, '1', '', '', 'NA', '1', '1', '[\"\"]', 'Bhadravathi', '', '', '', '', '', '', 100, 'hr(s)', 0, 0, 0, 0, 0, 1, 23, '', '', NULL, '2023-08-19 13:35:32', '2023-08-24 23:15:57', '', 'provider');
+(1, 1, 'Model Photoshoot', 'INR', '', 200, '1', '', '', 'NA', '1', '1', '[\"\"]', '', '', '', '', '', '', '', 8, 'hr(s)', 0, 0, 0, 0, 0, 1, 30, '', '', NULL, '2023-08-19 13:09:44', '2023-11-12 14:41:32', '', 'provider'),
+(2, 1, 'Kids Photography', 'INR', '', 2000, '1', '', '', 'NA', '1', '1', '[\"\"]', '', '', '', '', '', '', '', 1, 'hr(s)', 0, 0, 0, 0, 0, 1, 29, '', '', NULL, '2023-08-19 13:35:32', '2023-11-12 14:14:32', '', 'provider'),
+(3, 1, 'Candid Photoshoot', 'INR', NULL, 5000, '1', '', '', '', '1', '1', '', NULL, '', '', 'uploads/services/se_full_1697465825candid08.jpg', 'uploads/services/de_full_1697465825candid08.jpg', 'uploads/services/th_full_1697465825candid08.jpg', 'uploads/services/mo_full_1697465825candid08.jpg', 1, 'hr(s)', 0, 0, 0, 0, 0, 1, 5, '', '', NULL, '2023-10-16 19:47:05', '2023-10-16 19:47:05', '', 'provider');
 
 -- --------------------------------------------------------
 
@@ -51624,7 +51625,8 @@ CREATE TABLE `services_image` (
 
 INSERT INTO `services_image` (`id`, `service_id`, `service_image`, `service_details_image`, `thumb_image`, `mobile_image`, `status`, `is_url`, `is_default`) VALUES
 (1, '1', 'uploads/services/se_full_1692430783wedding-photographers-poorni-photography-couple-shot-6_15_292600-163823818363300-440x300.jpeg', 'uploads/services/de_full_1692430783wedding-photographers-poorni-photography-couple-shot-6_15_292600-163823818363300-440x300.jpeg', 'uploads/services/th_full_1692430783wedding-photographers-poorni-photography-couple-shot-6_15_292600-163823818363300-440x300.jpeg', 'uploads/services/mo_full_1692430783wedding-photographers-poorni-photography-couple-shot-6_15_292600-163823818363300-440x300.jpeg', 1, 1, 1),
-(2, '2', 'uploads/services/se_full_1692432331photo-1627639679638-8485316a4b21.jpeg', 'uploads/services/de_full_1692432331photo-1627639679638-8485316a4b21.jpeg', 'uploads/services/th_full_1692432331photo-1627639679638-8485316a4b21.jpeg', 'uploads/services/mo_full_1692432331photo-1627639679638-8485316a4b21.jpeg', 1, 1, 0);
+(2, '2', 'uploads/services/se_full_1692432331photo-1627639679638-8485316a4b21.jpeg', 'uploads/services/de_full_1692432331photo-1627639679638-8485316a4b21.jpeg', 'uploads/services/th_full_1692432331photo-1627639679638-8485316a4b21.jpeg', 'uploads/services/mo_full_1692432331photo-1627639679638-8485316a4b21.jpeg', 1, 1, 0),
+(3, '3', 'uploads/services/se_full_1697465825candid08.jpg', 'uploads/services/de_full_1697465825candid08.jpg', 'uploads/services/th_full_1697465825candid08.jpg', 'uploads/services/mo_full_1697465825candid08.jpg', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -51753,7 +51755,7 @@ CREATE TABLE `shops` (
 --
 
 INSERT INTO `shops` (`id`, `provider_id`, `shop_code`, `shop_name`, `description`, `country_code`, `contact_no`, `email`, `tax_allow`, `tax_number`, `address`, `country`, `state`, `city`, `postal_code`, `shop_location`, `shop_latitude`, `shop_longitude`, `all_days`, `availability`, `category`, `subcategory`, `sub_subcategory`, `status`, `total_views`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 'SHOP1Itpf3', 'Akash Photography', 'Studio', '91', '8904589390', 'akashgr64@gmail.com', 0, NULL, 'asasas', 101, 17, 1559, 577301, 'Bhadravathi', '', '', 1, '[{\"day\":1,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":2,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":3,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":4,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":5,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":6,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":7,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"}]', 1, 0, 0, 1, 14, 1, '2023-08-19 13:04:37', '2023-08-19 13:04:37');
+(1, 1, 'SHOP1Itpf3', 'Akash Photography', 'Studio', '', '8904589390', 'akashgr64@gmail.com', 0, NULL, 'asasas', 101, 17, 1559, 577301, '', '', '', 1, '[{\"day\":1,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":2,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":3,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":4,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":5,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":6,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"},{\"day\":7,\"from_time\":\"00:00  AM\",\"to_time\":\"11:30 PM\"}]', 1, 0, 0, 1, 26, 1, '2023-08-19 13:04:37', '2023-11-12 14:45:24');
 
 -- --------------------------------------------------------
 
@@ -56544,7 +56546,36 @@ INSERT INTO `views` (`id`, `user_id`, `service_id`) VALUES
 (32, 4, 2),
 (33, 95, 2),
 (34, 31, 2),
-(35, 20, 2);
+(35, 20, 2),
+(36, 6, 1),
+(37, 53, 3),
+(38, 82, 3),
+(39, 62, 1),
+(40, 15, 1),
+(41, 64, 1),
+(42, 83, 1),
+(43, 65, 1),
+(44, 35, 1),
+(45, 47, 1),
+(46, 55, 3),
+(47, 50, 3),
+(48, 92, 1),
+(49, 34, 2),
+(50, 2, 2),
+(51, 11, 3),
+(52, 16, 2),
+(53, 97, 2),
+(54, 29, 2),
+(55, 51, 2),
+(56, 45, 1),
+(57, 13, 1),
+(58, 93, 1),
+(59, 95, 1),
+(60, 37, 1),
+(61, 100, 1),
+(62, 54, 1),
+(63, 73, 1),
+(64, 70, 1);
 
 -- --------------------------------------------------------
 
@@ -57265,7 +57296,7 @@ ALTER TABLE `abuse_reports`
 -- AUTO_INCREMENT for table `additional_services`
 --
 ALTER TABLE `additional_services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `administrators`
@@ -57337,7 +57368,7 @@ ALTER TABLE `blog_posts`
 -- AUTO_INCREMENT for table `book_service`
 --
 ALTER TABLE `book_service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `book_service_cod`
@@ -57697,13 +57728,13 @@ ALTER TABLE `roles_permissions_lang`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `services_image`
 --
 ALTER TABLE `services_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `service_coupons`
@@ -57853,7 +57884,7 @@ ALTER TABLE `user_billing_details`
 -- AUTO_INCREMENT for table `views`
 --
 ALTER TABLE `views`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `wallet_table`
