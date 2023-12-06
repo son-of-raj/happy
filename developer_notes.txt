@@ -1,0 +1,15 @@
+credentials: 
+User: testuser1@example.com 123456
+Vendor: akashgr64@gmail.com 123456
+admin: <url>/admin , username: admin , password:123456
+
+
+Notes:
+
+1. booking process:
+    vendor while adding listing, 2 slots should be automatically created 12-12
+    from and to dates with multiple slots
+    while booking selection of staff should not be there.
+    while adding listing, staff should be non mandatory(if not selected then booking will go to directly vendor)
+    Staff should be renamed to manager.
+    if that slot is already booked by another user, those slots of that date is not visible to others
