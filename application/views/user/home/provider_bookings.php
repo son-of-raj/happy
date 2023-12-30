@@ -238,6 +238,7 @@
                                                 </li>
                                                 <li><span><?php echo (!empty($user_language[$user_selected]['lg_Amount'])) ? $user_language[$user_selected]['lg_Amount'] : $default_language['en']['lg_Amount']; ?></span>
                                                     <?php
+                                                    $service_amount1 = $bookings['total_amount'];
                                                     $final_amount = $this->db->select('final_amount,currency_code')
                                                         ->where('id', $bookings['id'])
                                                         ->get('book_service')->row_array();
@@ -251,9 +252,9 @@
 
                                                     if ($offerPrice != '' && $bookings['offersid'] > 0) {
                                                         echo currency_conversion($user_currency_code) . $finalAmount;
-                                                    ?><del><?php echo currency_conversion($user_currency_code) . $service_amount; ?></del>
+                                                    ?><del><?php echo currency_conversion($user_currency_code) . $service_amount1; ?></del>
                                                     <?php } else {
-                                                        echo currency_conversion($user_currency_code) . $service_amount;
+                                                        echo currency_conversion($user_currency_code) . $service_amount1;
                                                     }
 
                                                     /*if($couponPrice != '') { 

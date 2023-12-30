@@ -474,11 +474,10 @@ class Service extends CI_Controller
         $inputs['service_latitude'] = $this->input->post('service_latitude');
         $inputs['service_longitude'] = $this->input->post('service_longitude');
         $inputs['service_amount'] = $this->input->post('service_amount');
+        $inputs['booking_amount'] = $this->input->post('booking_amount');
 
         $inputs['about'] = $this->input->post('about');
         $inputs['currency_code'] = $this->input->post('currency_code');
-        $inputs['duration'] = $this->input->post('duration');
-        $inputs['duration_in'] = $this->input->post('duration_in');
 
         $inputs['updated_at'] = date('Y-m-d H:i:s');
 
@@ -504,7 +503,7 @@ class Service extends CI_Controller
         $thumb_image = ($thumb_image) ? implode(',', $thumb_image) : '';
         $mobile_image = ($mobile_image) ? implode(',', $mobile_image) : '';
 
-        $sql = "update services set service_image='" . $service_image . "',service_details_image='" . $service_details_image . "',thumb_image='" . $thumb_image . "',mobile_image='" . $mobile_image . "', service_sub_title='" . $this->input->post('service_sub_title') . "',currency_code='" . $this->input->post('currency_code') . "',category='" . $this->input->post('category') . "',subcategory='" . $this->input->post('subcategory') . "',service_amount='" . $this->input->post('service_amount') . "',service_offered= '" . $service_offered . "',about='" . $this->input->post('about') . "',updated_at='" . date('Y-m-d H:i:s') . "', sub_subcategory='" . $this->input->post('sub_subcategory') . "', duration='" . $this->input->post('duration') . "', duration_in='" . $this->input->post('duration_in') . "', autoschedule ='" . $autoschedule . "', autoschedule_days = '" . $autoschedule_days . "', autoschedule_session = '" . $autoschedule_session . "', staff_id='" . $staffId . "',shop_id='" . $shopId . "' , service_location='" . $this->input->post('service_location') . "',service_latitude='" . $this->input->post('service_latitude') . "',service_longitude='" . $this->input->post('service_longitude') . "' where id='" . $_POST['service_id'] . "'";
+        $sql = "update services set service_image='" . $service_image . "',service_details_image='" . $service_details_image . "',thumb_image='" . $thumb_image . "',mobile_image='" . $mobile_image . "', service_sub_title='" . $this->input->post('service_sub_title') . "',currency_code='" . $this->input->post('currency_code') . "',category='" . $this->input->post('category') . "',subcategory='" . $this->input->post('subcategory') . "',service_amount='" . $this->input->post('service_amount') . "',booking_amount='" . $this->input->post('booking_amount') . "',service_offered= '" . $service_offered . "',about='" . $this->input->post('about') . "',updated_at='" . date('Y-m-d H:i:s') . "', sub_subcategory='" . $this->input->post('sub_subcategory') . "', duration='" . $this->input->post('duration') . "', duration_in='" . $this->input->post('duration_in') . "', autoschedule ='" . $autoschedule . "', autoschedule_days = '" . $autoschedule_days . "', autoschedule_session = '" . $autoschedule_session . "', staff_id='" . $staffId . "',shop_id='" . $shopId . "' , service_location='" . $this->input->post('service_location') . "',service_latitude='" . $this->input->post('service_latitude') . "',service_longitude='" . $this->input->post('service_longitude') . "' where id='" . $_POST['service_id'] . "'";
 
 
 
