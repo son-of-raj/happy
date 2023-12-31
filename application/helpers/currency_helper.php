@@ -2,7 +2,8 @@
 
 if (!function_exists('currency_sign')) {
 
-    function currency_sign($currency_code) {
+    function currency_sign($currency_code)
+    {
 
         switch ($currency_code) {
             case 'USD':
@@ -20,12 +21,12 @@ if (!function_exists('currency_sign')) {
         }
         return $sign;
     }
-
 }
 
 if (!function_exists('currency_code')) {
 
-    function currency_code($currency_sign) {
+    function currency_code($currency_sign)
+    {
 
         switch ($currency_sign) {
             case '$':
@@ -43,11 +44,11 @@ if (!function_exists('currency_code')) {
         }
         return $code;
     }
-
 }
 if (!function_exists('currency_code_sign')) {
 
-    function currency_code_sign($val) {
+    function currency_code_sign($val)
+    {
         $currency_sign = array(
             "ALL" => 'Lek',
             "AFN" => '؋',
@@ -166,12 +167,12 @@ if (!function_exists('currency_code_sign')) {
             return "$";
         }
     }
-
 }
 
 if (!function_exists('currency_conversion')) {
 
-    function currency_conversion($val) {
+    function currency_conversion($val)
+    {
         $currency_symbols = array(
             'AED' => '&#1583;',
             'AFN' => '&#65;',
@@ -342,12 +343,12 @@ if (!function_exists('currency_conversion')) {
 
         return $symbols;
     }
-
 }
 if (!function_exists('settings')) {
 
-    function settings($val) {
-        $ci = & get_instance();
+    function settings($val)
+    {
+        $ci = &get_instance();
         $settings = $ci->db->query("select * from system_settings WHERE status = 1")->result_array();
         $result = array();
 
@@ -366,21 +367,21 @@ if (!function_exists('settings')) {
 
         return $results;
     }
-
 }
 if (!function_exists('get_currency')) {
 
-    function get_currency() {
-        $ci = & get_instance();
+    function get_currency()
+    {
+        $ci = &get_instance();
         $currency = $ci->db->where('status', 1)->select('id,currency_code')->get('currency_rate')->result_array();
         return $currency;
     }
-
 }
 if (!function_exists('get_user_currency')) {
 
-    function get_user_currency() {
-        $ci = & get_instance();
+    function get_user_currency()
+    {
+        $ci = &get_instance();
         $ci->load->library('session');
         $user_id = $ci->session->userdata('id');
         $currency = $ci->db->where('id', $user_id)->select('currency_code')->get('users')->row_array();
@@ -390,12 +391,12 @@ if (!function_exists('get_user_currency')) {
         $data['user_currency_sign'] = currency_code_sign($currency['currency_code']);
         return $data;
     }
-
 }
 if (!function_exists('get_provider_currency')) {
 
-    function get_provider_currency() {
-        $ci = & get_instance();
+    function get_provider_currency()
+    {
+        $ci = &get_instance();
         $ci->load->library('session');
         $user_id = $ci->session->userdata('id');
         $currency = $ci->db->where('id', $user_id)->select('currency_code')->get('providers')->row_array();
@@ -406,18 +407,23 @@ if (!function_exists('get_provider_currency')) {
         $data['user_currency_sign'] = currency_code_sign($currency['currency_code']);
         return $data;
     }
-
 }
 if (!function_exists('get_gigs_currency')) {
 
-    function get_gigs_currency($gig_price, $gig_currency, $user_currency) {
-        $ci = & get_instance();
-       
-        $gigs_currency_rate = $ci->db->where('currency_code', $gig_currency)->select('rate')->get('currency_rate')->row()->rate;
+    function get_gigs_currency($gig_price, $gig_currency, $user_currency)
+    {
+        $ci = &get_instance();
+
+        $res = $ci->db->where('currency_code', $gig_currency)->select('rate')->get('currency_rate');
+        if ($res->num_rows() > 0) {
+            $gigs_currency_rate = $res->row()->rate;
+        } else {
+            $gigs_currency_rate = 0;
+        }
 
         $user_currency_rate = $ci->db->where('currency_code', $user_currency)->select('rate')->get('currency_rate')->row()->rate;
-        
-        if( $user_currency_rate > 0 && $gigs_currency_rate > 0) {
+
+        if ($user_currency_rate > 0 && $gigs_currency_rate > 0) {
             $rates = $user_currency_rate / $gigs_currency_rate;
             $rate = $rates * $gig_price;
         } else {
@@ -425,63 +431,63 @@ if (!function_exists('get_gigs_currency')) {
         }
         return round($rate, 2);
     }
-
 }
 
 if (!function_exists('get_user_currency_code')) {
 
-    function get_user_currency_code($id) {
-        $ci = & get_instance();
+    function get_user_currency_code($id)
+    {
+        $ci = &get_instance();
         $user_id = $id;
-       
-		$q = $ci->db->query("SELECT currency_code from users  where token = '$user_id' ");
+
+        $q = $ci->db->query("SELECT currency_code from users  where token = '$user_id' ");
         $currency = $q->row_array();
-		
+
         $data['user_currency_code'] = $currency['currency_code'];
         $data['user_currency_sign'] = currency_code_sign($currency['currency_code']);
         return $data;
     }
-
 }
 
 if (!function_exists('get_provider_currency_code')) {
 
-    function get_provider_currency_code($id) {
-        $ci = & get_instance();
+    function get_provider_currency_code($id)
+    {
+        $ci = &get_instance();
         $user_id = $id;
 
-		$q = $ci->db->query("SELECT currency_code from providers  where token = '$user_id' ");
+        $q = $ci->db->query("SELECT currency_code from providers  where token = '$user_id' ");
         $currency = $q->row_array();
-		
+
         $data['user_currency_code'] = $currency['currency_code'];
         $data['user_currency_sign'] = currency_code_sign($currency['currency_code']);
         return $data;
     }
-
 }
 
 if (!function_exists('get_api_user_currency')) {
 
-    function get_api_user_currency($id) {
-        $ci = & get_instance();
+    function get_api_user_currency($id)
+    {
+        $ci = &get_instance();
 
         $user_id = $id;
-		$q = $ci->db->query("SELECT currency_code from users  where id = '$user_id' ");
+        $q = $ci->db->query("SELECT currency_code from users  where id = '$user_id' ");
         $currency = $q->row_array();
 
         $data['user_currency_code'] = $currency['currency_code'];
         $data['user_currency_sign'] = currency_code_sign($currency['currency_code']);
         return $data;
     }
-
 }
 if (!function_exists('get_api_provider_currency')) {
 
-    function get_api_provider_currency($id) {
-        $ci = & get_instance();
+    function get_api_provider_currency($id)
+    {
+        $ci = &get_instance();
 
         $provider_id = $id;
-       
+
         $q = $ci->db->query("SELECT currency_code from providers  where id = '$provider_id' ");
         $currency = $q->row_array();
 
@@ -489,24 +495,24 @@ if (!function_exists('get_api_provider_currency')) {
         $data['user_currency_sign'] = currency_code_sign($currency['currency_code']);
         return $data;
     }
-
 }
 
 if (!function_exists('get_flag')) {
 
-    function get_flag($lang) {
-        $ci = & get_instance();
+    function get_flag($lang)
+    {
+        $ci = &get_instance();
         $flag = $ci->db->query("select * from language WHERE status = 1 and deleted_status=0 and language_value='" . $lang . "'")->row_array();
         if (!empty($flag['flag_img'])) {
             return $flag['flag_img'];
         }
     }
-
 }
 
 if (!function_exists('currency_code_symbol')) {
 
-    function currency_code_symbol() {
+    function currency_code_symbol()
+    {
         $currency_symbol = array(
             "ALL" => 'Lek',
             "AFN" => '؋',
@@ -624,6 +630,4 @@ if (!function_exists('currency_code_symbol')) {
         );
         return $currency_symbol;
     }
-
 }
-?>

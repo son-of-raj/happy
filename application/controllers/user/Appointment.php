@@ -1444,11 +1444,10 @@ class Appointment extends CI_Controller
 
 		$time = $this->input->post('booking_time');
 		$slots = json_encode($time);
-		$booking_time = explode('-', $time);
-		$start_time = strtotime($booking_time[0]);
-		$end_time = strtotime($booking_time[1]);
-		$from_time = date('G:i:s', ($start_time));
-		$to_time = date('G:i:s', ($end_time));
+		$start_time = '';
+		$end_time = '';
+		$from_time =  '';
+		$to_time =  '';
 
 		$inputs = array();
 		$service_id = $this->input->post('service_id'); // Package ID  		
@@ -1463,13 +1462,13 @@ class Appointment extends CI_Controller
 		$inputs['booking_amnt'] = $final_amount;
 
 		$inputs['shop_id']       = $this->input->post('shop_id');
-		$inputs['staff_id']      = $this->input->post('staff_id');
+		$inputs['staff_id']      = get_staff_id_by_service($service_id);
 
 		$inputs['location'] = $this->input->post('service_location');
 		$inputs['latitude'] = $this->input->post('service_latitude');
 		$inputs['longitude'] = $this->input->post('service_longitude');
 
-		$inputs['service_date'] = date('Y-m-d', strtotime($this->input->post('booking_date')));
+		$inputs['service_date'] = date('Y-m-d');
 		$inputs['from_time'] = $from_time;
 		$inputs['to_time'] = $to_time;
 		$inputs['notes']      = $this->input->post('notes');

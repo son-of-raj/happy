@@ -241,13 +241,7 @@ $get_coupon_code = $this->db->where('status', 1)
 									<small class="text-muted"><?php echo '(' . $sfor . ')'; ?></small>
 								<?php } ?>
 							</div>
-							<span class="text-muted"><?php echo currency_conversion($user_currency_code) . $amtval; ?>
-								<?php
-
-								$b['amount'] = get_gigs_currency($b['amount'], $user_currency_codeval, $user_currency_code);
-								if ($sval == 1) { ?>
-									<del><small><?php echo currency_conversion($user_currency_code) . ($b['amount'] + $aimat); ?></small></del>
-								<?php } ?>
+							<span class="text-muted"><?php echo currency_conversion($user_currency_code) . $booking_amount; ?>
 							</span>
 						</li>
 
