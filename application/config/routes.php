@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | ----------------------------------------------------------------  ---------
@@ -77,8 +77,8 @@ $route['admin/send-push-notification'] = 'admin/dashboard/send_push_notification
 
 //admin users
 $route['adminusers'] = 'admin/dashboard/adminusers';
-$route['adminusers/edit']='admin/dashboard/edit_adminusers';
-$route['adminusers/edit/(:num)']='admin/dashboard/edit_adminusers/$1';
+$route['adminusers/edit'] = 'admin/dashboard/edit_adminusers';
+$route['adminusers/edit/(:num)'] = 'admin/dashboard/edit_adminusers/$1';
 $route['adminuser-details/(:num)'] = 'admin/dashboard/adminuser_details/$1';
 $route['adminusers-list'] = 'admin/dashboard/adminusers_list';
 
@@ -196,6 +196,7 @@ $route['freelancer-details/(:num)'] = 'admin/service/freelancer_details/$1';
 $route['freelances-providers'] = 'admin/service/freelance_providers';
 $route['service-providers'] = 'admin/service/service_providers';
 
+
 $route['provider_list'] = 'admin/service/provider_list';
 $route['service-list'] = 'admin/service/service_list';
 $route['provider-details/(:num)'] = 'admin/service/provider_details/$1';
@@ -246,97 +247,98 @@ $route['privacy-app'] = 'user/privacy/privacy_app';
 $route['contact-app'] = 'user/contact/contact_app';
 
 //my_service_pagination
-$route['my-services']='user/myservice/index';
-$route['my-services-inactive']='user/myservice/inactive_services';
-$route['service-offer-history']='user/myservice/service_offer_history';
+$route['my-services'] = 'user/myservice/index';
+$route['my-services-inactive'] = 'user/myservice/inactive_services';
+$route['service-offer-history'] = 'user/myservice/service_offer_history';
 
-$route['coupons']='user/myservice/service_coupons';
-$route['coupon-details']='user/myservice/service_coupons_details';
+$route['coupons'] = 'user/myservice/service_coupons';
+$route['coupon-details'] = 'user/myservice/service_coupons_details';
 
-$route['rewards']='user/myservice/service_rewards';
-$route['reward-details']='user/myservice/service_reward_details';
+$route['rewards'] = 'user/myservice/service_rewards';
+$route['reward-details'] = 'user/myservice/service_reward_details';
 
 //end
 
 //freelancer-shop
-$route['freelances/my-shop-inactive']='user/shopfreelancer/inactive_shop';
+$route['freelances/my-shop-inactive'] = 'user/shopfreelancer/inactive_shop';
 $route['freelances/shop-preview/(:any)'] = 'user/shopfreelancer/shop_preview/$1';
-$route['freelances/edit-shop/(:num)']='user/shopfreelancer/edit_shop/$1';
-$route['freelances/add-shop']='user/shopfreelancer/add_shop';
-$route['freelances/shop']='user/shopfreelancer/index';
+$route['freelances/edit-shop/(:num)'] = 'user/shopfreelancer/edit_shop/$1';
+$route['freelances/add-shop'] = 'user/shopfreelancer/add_shop';
+$route['freelances/shop'] = 'user/shopfreelancer/index';
 //Shop, branch, Staff and Appointment
-$route['service-checkout/(:any)']='user/appointment/checkout/$1';
-$route['edit-appointment/(:any)']='user/appointment/edit_appointment/$1';
-$route['book-appointment/(:any)']='user/appointment/book_appointment/$1';
-$route['my-branch-inactive']='user/branch/inactive_branch';
+$route['service-checkout/(:any)'] = 'user/appointment/checkout/$1';
+$route['edit-appointment/(:any)'] = 'user/appointment/edit_appointment/$1';
+$route['book-appointment/(:any)'] = 'user/appointment/book_appointment/$1';
+$route['my-branch-inactive'] = 'user/branch/inactive_branch';
 $route['branch-preview/(:any)'] = 'user/branch/branch_preview/$1';
-$route['edit-branch/(:num)']='user/branch/edit_branch/$1';
-$route['add-branch']='user/branch/add_branch';
-$route['branch']='user/branch/index';
-$route['my-shop-inactive']='user/shop/inactive_shop';
+$route['edit-branch/(:num)'] = 'user/branch/edit_branch/$1';
+$route['add-branch'] = 'user/branch/add_branch';
+$route['branch'] = 'user/branch/index';
+$route['my-shop-inactive'] = 'user/shop/inactive_shop';
 $route['shop-preview/(:any)'] = 'user/shop/shop_preview/$1';
-$route['edit-shop/(:num)']='user/shop/edit_shop/$1';
-$route['add-shop']='user/shop/add_shop';
-$route['shop']='user/shop/index';
-$route['staff-details/(:num)']='user/service/staff_details/$1';
-$route['edit-staff/(:num)']='user/service/edit_staff/$1';
-$route['add-staff']='user/service/add_staff';
-$route['staff-settings']='user/service/staff_settings';
+$route['edit-shop/(:num)'] = 'user/shop/edit_shop/$1';
+$route['add-shop'] = 'user/shop/add_shop';
+$route['shop'] = 'user/shop/index';
+$route['staff-details/(:num)'] = 'user/service/staff_details/$1';
+$route['edit-staff/(:num)'] = 'user/service/edit_staff/$1';
+$route['add-staff'] = 'user/service/add_staff';
+$route['staff-settings'] = 'user/service/staff_settings';
 
-$route['add-service']='user/service/add_service';
-$route['edit_service']='user/service/edit_service';
-$route['notification-list']='user/service/notification_view';
-$route['booking']='user/service/booking';
-$route['update-bookingstatus']='user/service/update_bookingstatus';
-$route['update-status-user']='user/service/update_status_user';
-$route['update_booking/(:any)']='user/service/update_booking/$1';
-$route['user_bookingstatus/(:any)']='user/service/user_bookingstatus/$1';
-$route['book-service/(:any)']='user/service/book_service/$1';
-$route['user-dashboard']='user/service/user_dashboard';
-$route['provider-dashboard']='user/service/provider_dashboard';
-$route['user-settings']='user/dashboard/user_settings';
-$route['change-password']='user/dashboard/userchangepassword';
-$route['provider-change-password']='user/dashboard/prochangepassword';
-$route['user-wallet']='user/dashboard/user_wallet';
-$route['paytab-payment']='user/dashboard/paytab_payment';//user/dashboard/paytab_payment
-$route['user-payment']='user/dashboard/user_payment';
-$route['user-accountdetails']='user/dashboard/user_accountdetails';
-$route['user-reviews']='user/dashboard/user_reviews';
-$route['provider-reviews']='user/dashboard/provider_reviews';
-$route['booking-details/(:any)']='user/service/booking_details/$1';
-$route['booking-details-user/(:any)']='user/service/booking_details_user/$1';
+$route['add-service'] = 'user/service/add_service';
+$route['edit_service'] = 'user/service/edit_service';
+$route['notification-list'] = 'user/service/notification_view';
+$route['booking'] = 'user/service/booking';
+$route['update-bookingstatus'] = 'user/service/update_bookingstatus';
+$route['update-status-user'] = 'user/service/update_status_user';
+$route['update_booking/(:any)'] = 'user/service/update_booking/$1';
+$route['user_bookingstatus/(:any)'] = 'user/service/user_bookingstatus/$1';
+$route['book-service/(:any)'] = 'user/service/book_service/$1';
+$route['user-dashboard'] = 'user/service/user_dashboard';
+$route['provider-dashboard'] = 'user/service/provider_dashboard';
+$route['user-settings'] = 'user/dashboard/user_settings';
+$route['change-password'] = 'user/dashboard/userchangepassword';
+$route['provider-change-password'] = 'user/dashboard/prochangepassword';
+$route['user-wallet'] = 'user/dashboard/user_wallet';
+$route['paytab-payment'] = 'user/dashboard/paytab_payment'; //user/dashboard/paytab_payment
+$route['user-payment'] = 'user/dashboard/user_payment';
+$route['user-accountdetails'] = 'user/dashboard/user_accountdetails';
+$route['user-reviews'] = 'user/dashboard/user_reviews';
+$route['provider-reviews'] = 'user/dashboard/provider_reviews';
+$route['booking-details/(:any)'] = 'user/service/booking_details/$1';
+$route['booking-details-user/(:any)'] = 'user/service/booking_details_user/$1';
 
-$route['user-order-payment']='user/dashboard/user_order_payment';
-$route['product-payment']='user/dashboard/product_payment';
-$route['provider-deposit-history']='user/dashboard/provider_deposit_history';
-$route['provider-bookings']='user/dashboard/provider_bookings';
-$route['provider-settings']='user/dashboard/provider_settings';
-$route['provider-wallet']='user/dashboard/provider_wallet';
-$route['provider-payment']='user/dashboard/provider_payment';
-$route['provider-subscription']='user/dashboard/provider_subscription';
-$route['provider-availability']='user/dashboard/provider_availability';
-$route['provider-accountdetails']='user/dashboard/provider_accountdetails';
-$route['create-availability']='user/dashboard/create_availability';
-$route['user-bookings']='user/dashboard/user_bookings';
-$route['logout']='user/login/logout';
+$route['user-order-payment'] = 'user/dashboard/user_order_payment';
+$route['product-payment'] = 'user/dashboard/product_payment';
+$route['provider-deposit-history'] = 'user/dashboard/provider_deposit_history';
+$route['provider-bookings'] = 'user/dashboard/provider_bookings';
+$route['offline-bookings'] = 'user/appointment/offline_bookings';
+$route['provider-settings'] = 'user/dashboard/provider_settings';
+$route['provider-wallet'] = 'user/dashboard/provider_wallet';
+$route['provider-payment'] = 'user/dashboard/provider_payment';
+$route['provider-subscription'] = 'user/dashboard/provider_subscription';
+$route['provider-availability'] = 'user/dashboard/provider_availability';
+$route['provider-accountdetails'] = 'user/dashboard/provider_accountdetails';
+$route['create-availability'] = 'user/dashboard/create_availability';
+$route['user-bookings'] = 'user/dashboard/user_bookings';
+$route['logout'] = 'user/login/logout';
 
 /*
  * Multiple Languages
  */
-$route['language']='admin/language';
-$route['languages']='admin/language/languages';
-$route['edit-languages/(:any)']='admin/language/editLanguages/$1';
-$route['add-languages']='admin/language/addLanguage';
-$route['web-languages/(:any)']='admin/language/webLanguages/$1';
+$route['language'] = 'admin/language';
+$route['languages'] = 'admin/language/languages';
+$route['edit-languages/(:any)'] = 'admin/language/editLanguages/$1';
+$route['add-languages'] = 'admin/language/addLanguage';
+$route['web-languages/(:any)'] = 'admin/language/webLanguages/$1';
 
 /*api*/
 
 /*chat api*/
 
 $route['user-chat'] = 'user/Chat_ctrl';
-$route['user-chat/booking-new-chat']='user/Chat_ctrl/booking_new_chat';
-$route['user-chat/insert_chat']='user/Chat_ctrl/insert_message';
-$route['user-chat/get_user_chat_lists']='user/Chat_ctrl/get_user_chat_lists';
+$route['user-chat/booking-new-chat'] = 'user/Chat_ctrl/booking_new_chat';
+$route['user-chat/insert_chat'] = 'user/Chat_ctrl/insert_message';
+$route['user-chat/get_user_chat_lists'] = 'user/Chat_ctrl/get_user_chat_lists';
 
 $route['api/country_details'] = 'api/api/country_details';
 $route['api/chat_details'] = 'api/api/chat_details';
@@ -387,11 +389,11 @@ $route['api/views'] = 'api/api/views';
 $route['api/update_bookingstatus'] = 'api/api/update_bookingstatus';
 $route['api/service_statususer'] = 'api/api/service_statususer';
 $route['api/bookinglist'] = 'api/api/bookinglist';
-$route['api/get_services_from_subid'] = 'api/api/get_services_from_subid';#get services belongs to sub category id
-$route['api/get_provider_dashboard_infos'] = 'api/api/get_provider_dashboard_infos';#get provider dashboar infos
+$route['api/get_services_from_subid'] = 'api/api/get_services_from_subid'; #get services belongs to sub category id
+$route['api/get_provider_dashboard_infos'] = 'api/api/get_provider_dashboard_infos'; #get provider dashboar infos
 $route['api/delete_account'] = 'api/api/delete_account';
 $route['api/rate_review'] = 'api/api/rate_review';
-$route['api/review_type'] = 'api/api/review_type'; 
+$route['api/review_type'] = 'api/api/review_type';
 $route['api/update_booking'] = 'api/api/update_booking';
 $route['api/generate_otp_provider'] = 'api/api/generate_otp_provider';
 $route['api/check_provider_email'] = 'api/api/check_provider_email';
@@ -486,7 +488,7 @@ $route['admin/social-settings'] = 'admin/settings/socialSetting';
 $route['admin/seo-settings'] = 'admin/settings/seoSetting';
 $route['admin/theme-color'] = 'admin/Settings/ThemeColorChange';
 $route['admin/emailsettings'] = 'admin/settings/emailsettings';
-$route['users/add']='admin/dashboard/add_user';
+$route['users/add'] = 'admin/dashboard/add_user';
 $route['admin/localization'] = 'admin/settings/localization';
 $route['admin/pages'] = 'admin/settings/pages';
 $route['settings/about-us/(:num)'] = 'admin/settings/aboutus/$1';
@@ -497,7 +499,7 @@ $route['settings/privacy-policy/(:num)'] = 'admin/settings/privacy_policy/$1';
 $route['settings/terms-service/(:num)'] = 'admin/settings/terms_of_services/$1';
 $route['settings/home-page/(:num)'] = 'admin/settings/home_page';
 $route['cookie-policy'] = 'user/privacy/cookiesPolicy';
-$route['add-provider']='admin/service/add_provider';
+$route['add-provider'] = 'admin/service/add_provider';
 $route['admin/frontend-settings'] = 'admin/footer_menu/frontendSettings';
 $route['admin/footer-settings'] = 'admin/settings/footerSetting';
 $route['admin/currency-settings'] = 'admin/settings/currencySettings';

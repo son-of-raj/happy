@@ -265,6 +265,7 @@
         }
       }
     });
+
   $(".addiservice").on("change", function () {
     var val = $(this).val();
     var dur = $(this).attr("data-durationval");

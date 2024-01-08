@@ -163,6 +163,31 @@ class Appointment extends CI_Controller
 		$this->load->view($this->data['theme'] . '/template');
 	}
 
+	public function offline_bookings()
+	{
+		if (empty($this->session->userdata('id'))) {
+			redirect(base_url());
+		}
+		if ($this->session->userdata('usertype') != 'provider') {
+			redirect(base_url());
+		}
+
+		$query = $this->db->query("select * from system_settings WHERE status = 1");
+		$result = $query->result_array();
+		if (!empty($result)) {
+			foreach ($result as $data) {
+				if ($data['key'] == 'map_key') {
+					$map_key = $data['map_key'];
+				}
+			}
+		}
+
+		$this->data['map_key'] = $map_key;
+		$this->data['page'] = 'book_offline';
+		$this->load->vars($this->data);
+		$this->load->view($this->data['theme'] . '/template');
+	}
+
 	public function book_appointment()
 	{
 		if (empty($this->session->userdata('id'))) {
@@ -2457,5 +2482,21 @@ class Appointment extends CI_Controller
 			}
 		}
 		exit;
+	}
+
+	public function get_service_details_by_id()
+	{
+		$this->load->model('Service_model');
+		$serviceId = $this->input->post('service_id');
+
+		if ($serviceId) {
+			$res = $this->Service_model->get_service_by_id($serviceId);
+			header('Content-Type: application/json'); // Set response content type
+			echo json_encode($res);
+		} else {
+			// Handle invalid or missing service ID
+			http_response_code(400); // Bad Request
+			echo json_encode(['error' => 'Invalid service ID']);
+		}
 	}
 }

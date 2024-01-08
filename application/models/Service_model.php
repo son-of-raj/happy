@@ -41,6 +41,22 @@ class Service_model extends CI_Model
     return $this->db->where('id', $inputs)->get('services')->row_array();
   }
 
+  public function get_service_by_id($id)
+  {
+    $this->db->select('services.*, shops.shop_name');
+    $this->db->from('services');
+    $this->db->join('shops', 'shops.id = services.shop_id', 'left');
+
+    $this->db->where('services.id', $id);
+    $query = $this->db->get();
+
+    return $query->row_array();
+  }
+
+
+
+
+
   public function get_category()
   {
     return $this->db->get('categories')->result_array();
