@@ -122,8 +122,6 @@
 
         var total_amt = $("#service_amount").val();
 
-        console.log(total_amt, final_gig_amount1);
-
         var addiser = [];
         var addiamt = [];
         $('input[name="additional_services[]"]:checked').each(function () {

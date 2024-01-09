@@ -188,6 +188,223 @@ class Appointment extends CI_Controller
 		$this->load->view($this->data['theme'] . '/template');
 	}
 
+	public function offline_book_checkout()
+	{
+
+		if (empty($this->session->userdata('id'))) {
+			redirect(base_url());
+		}
+		if ($this->session->userdata('usertype') != 'provider') {
+			redirect(base_url());
+		}
+
+		$user_currency = get_user_currency();
+		$user_currency_code = $user_currency['user_currency_code'];
+
+		removeTag($this->input->post());
+		$final_amount = $this->input->post('final_amount');
+
+		$time = $this->input->post('booking_time');
+		$slots = json_encode($time);
+		$start_time = '';
+		$end_time = '';
+		$from_time =  '';
+		$to_time =  '';
+
+		$inputs = array();
+		$service_id = $this->input->post('service_id'); // Package ID  		
+		$records = $this->appointment->get_service($service_id);
+		$cal_seramt = $this->input->post('total_amt');
+
+		$inputs['service_id']    = $service_id;
+		$inputs['provider_id']   = $records['user_id'];
+		$inputs['user_id']       = $this->session->userdata('id');
+		$inputs['slots']     = $slots;
+
+		$inputs['booking_amnt'] = $final_amount;
+
+		$inputs['shop_id']       = $records['shop_id'];
+		$inputs['staff_id']      = $records['staff_id'];
+
+		$inputs['location'] = $this->input->post('service_location');
+		$inputs['latitude'] = $records['service_latitude'];
+		$inputs['longitude'] = $records['service_longitude'];
+
+		$inputs['service_date'] = date('Y-m-d');
+		$inputs['from_time'] = $from_time;
+		$inputs['to_time'] = $to_time;
+		$inputs['notes']      = $this->input->post('notes');
+
+		$inputs['tokenid'] = 'old type';
+		$inputs['cod'] = 0;
+
+
+
+		$inputs['currency_code'] = $records['currency_code'];
+		$inputs['amount'] = $records['service_amount'];
+
+
+		$inputs['updated_on']  = (date('Y-m-d H:i:s'));
+		$inputs['home_service'] = $this->input->post('service_at');
+		$inputs['autoschedule_session_no'] = $records['autoschedule'];
+
+		$inputs['offersid'] = $this->appointment->get_booking_offers_by_service($service_id)['offer_id'];
+		$inputs['couponid'] = 0;
+		$inputs['rewardid'] = 0;
+		$rtype = '';
+
+		$inputs['request_date'] = date('Y-m-d');
+		$inputs['request_time'] = date('H:i:s', time());
+		$inputs['status'] = 2;
+
+		$book_id = 0;
+
+		if ($book_id > 0) {
+			$qry = $this->db->select('total_amount, final_amount')->where('id', $book_id)->get('book_service')->row_array();
+			$tot = $qry['total_amount'];
+			$inputs['total_amount'] = $tot;
+			$inputs['final_amount'] = $qry['final_amount'];
+		} else {
+			$addiamt = 0;
+			$totalamt = $cal_seramt;
+
+			//Total Calculation 
+			$total_amt_val = $totalamt + $addiamt;
+			if ($total_amt_val <= 0) $total_amt_val = 0;
+			$inputs['total_amount'] = $total_amt_val;
+			$inputs['final_amount'] = $total_amt_val;
+
+
+
+			// If Offers available
+			if ($inputs['offersid'] > 0) {
+				$offers = $this->db->where("id", $inputs['offersid'])->get("service_offers")->row_array();
+
+				$new_serviceamt = $inputs['total_amount'];
+				$offerPrice = '';
+				$offersid = 0;
+				if (!empty($offers['offer_percentage']) && $offers['offer_percentage'] > 0 && $offers['id'] > 0) {
+					$offerPrice = ($new_serviceamt) * $offers['offer_percentage'] / 100;
+					if (is_nan($offerPrice)) $offerPrice = 0;
+					$offerPrice = number_format($offerPrice, 2);
+					$offersid = $offers['id'];
+
+					$new_serviceamt  = $new_serviceamt - $offerPrice;
+					$new_serviceamt  = number_format($new_serviceamt, 2);
+					if ($new_serviceamt <= 0) $new_serviceamt = 0;
+					$inputs['total_amount'] = $new_serviceamt;
+					$inputs['final_amount'] = $new_serviceamt;
+					$inputs['offersid'] = $offersid;
+				}
+			}
+
+			// If Rewards available
+			if ($inputs['rewardid'] > 0) {
+				$reward = $this->db->where("id", $inputs['rewardid'])->get("service_rewards")->row_array();
+				$re_serviceamt = $inputs['total_amount'];
+				$rewardPrice = '';
+				$rewardid = 0;
+				if ($rtype == '') {
+					if (!empty($reward['reward_type']) && $reward['reward_type'] == 1 && $reward['id'] > 0) {
+						$rewardPrice = ($re_serviceamt) * $reward['reward_discount'] / 100;
+						if (is_nan($rewardPrice)) $rewardPrice = 0;
+						$rewardPrice = number_format($rewardPrice, 2);
+						$rewardid = $reward['id'];
+
+						$re_serviceamt  = $re_serviceamt - $rewardPrice;
+						$re_serviceamt  = number_format($re_serviceamt, 2);
+						if ($re_serviceamt <= 0) $re_serviceamt = 0;
+						$inputs['total_amount'] = $re_serviceamt;
+						$inputs['final_amount'] = $re_serviceamt;
+						$inputs['rewardid'] = $rewardid;
+					}
+				}
+			}
+		}
+
+
+
+
+		//Booking					
+		if ($book_id == 0) {
+			if ($rtype != '' && $rtype == '0') { // Free Service
+				$inputs['cod'] = 0;
+				$inputs['request_date'] = date('Y-m-d');
+				$inputs['request_time'] = date('H:i:s', time());
+				$bookres = $this->appointment->booking_success($inputs);
+				if ($bookres > 0) {
+					$this->db->query("UPDATE `service_rewards` SET `status` = 3 WHERE `id` = '" . $inputs['rewardid'] . "' and user_id = " . $this->session->userdata('id') . " and service_id = " . $service_id);
+					$message = 'You have booked appointment successfully';
+					$this->session->set_flashdata('success_message', $this->bookmsg);
+					echo json_encode(['success' => true, 'msg' => $this->bookmsg, 'status' => 1, 'title' => $this->BMsg, 'bookid' => $bookres]);
+				} else {
+					$this->session->set_flashdata('error_message', $this->errmsg);
+					echo json_encode(['success' => false, 'msg' => $this->errmsg, 'title' => $this->BMsg, 'status' => 2]);
+				}
+			} else {
+				$result = $this->appointment->booking_success($inputs);
+				if ($result != '' && $result > 0) {
+					if ($inputs['autoschedule_session_no']  == 1) {
+						$myservice = $this->db->select('service_title,autoschedule, autoschedule_days, autoschedule_session')->where('id', $service_id)->from('services')->get()->row_array();
+						if ($myservice['autoschedule_session'] != 0 && $myservice['autoschedule_days'] != 0) {
+							$days = 0;
+							$d = 2;
+							for ($s = 1; $s < intval($myservice['autoschedule_session']); $s++) {
+								$days = intval($myservice['autoschedule_days']);
+								$newdate = date("Y-m-d", strtotime("+" . $days . " day", strtotime($inputs['service_date'])));
+								$session_no = $d++;
+								$inputs['amount'] = 0;
+								$inputs['service_date'] = $newdate;
+								$inputs['notes']      = $myservice['service_title'] . "  - Session(" . $session_no . ")";
+								$inputs['autoschedule_session_no'] = $session_no;
+								$inputs['parent_bookid'] = $result;
+
+								$this->appointment->booking_success($inputs);
+							}
+						}
+					}
+					$message = $this->BAMsg;
+					$this->session->set_flashdata('success_message', $message);
+
+					echo json_encode(['success' => true, 'msg' => $message,  'title' => $this->BMsg, 'status' => 4, 'bookid' => $result]);
+					exit;
+				} else {
+
+					$message = 'Sorry, Try again later...';
+					$this->session->set_flashdata('error_message', $this->errmsg);
+					echo json_encode(['success' => false, 'msg' => $this->errmsg, 'title' => $this->BMsg, 'status' => 2]);
+				}
+			}
+		}
+
+		// Updation
+		if ($book_id > 0) {
+			$inputs['request_date'] = date('Y-m-d');
+			$inputs['request_time'] = date('H:i:s', time());
+			$inputs['status'] = 2;
+
+			if ($this->db->update('book_service', $inputs, array("id" => $book_id))) {
+
+				$token = $this->session->userdata('chat_token');
+				$data = $this->api->get_book_info($book_id);
+				$user_name = $this->api->get_user_info($data['user_id'], 2);
+				$service = $this->db->where('id', $service_id)->from('services')->get()->row_array();
+				$text = $user_name['name'] . " has edited the Booked Service '" . $service['service_title'] . "'";
+
+				$ptype = $this->db->select('type')->where('id', $inputs['provider_id'])->get('providers')->row()->type;
+				$this->send_push_notification($token, $book_id, $ptype, $msg = $text);
+
+				$this->session->set_flashdata('success_message', $this->book_editmsg);
+				echo json_encode(['success' => true, 'msg' => $this->book_editmsg,  'title' => $this->BMsg, 'status' => 5]);
+			} else {
+				$this->session->set_flashdata('error_message', $this->errmsg);
+				echo json_encode(['success' => false, 'msg' => $this->errmsg,  'title' => $this->BMsg, 'status' => 2]);
+			}
+		}
+
+		exit;
+	}
+
 	public function book_appointment()
 	{
 		if (empty($this->session->userdata('id'))) {
