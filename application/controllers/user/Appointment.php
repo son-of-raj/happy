@@ -2716,4 +2716,29 @@ class Appointment extends CI_Controller
 			echo json_encode(['error' => 'Invalid service ID']);
 		}
 	}
+
+	public function check_user_availability()
+	{
+		$email = $this->input->post('email');
+		$res = [];
+
+		if ($email) {
+			$query = $this->db->get_where('users', array('email' => $email));
+
+			if ($query->num_rows() > 0) {
+				$user_data = $query->row_array();
+				$res['data'] = $user_data;
+				$res['status'] = true;
+			} else {
+				$res['status'] = false;
+			}
+
+			header('Content-Type: application/json');
+			echo json_encode($res);
+		} else {
+			// Handle invalid or missing email
+			http_response_code(400); // Bad Request
+			echo json_encode(['error' => 'Invalid email']);
+		}
+	}
 }

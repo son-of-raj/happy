@@ -54,6 +54,15 @@ $services = $this->db->get('services')->result();
 								<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 								<div class="row">
 
+									<div class="col-lg-10">
+										<div class="form-group">
+											<label>User</label>
+											<input class="form-control" type="email" name="user_email" id="user_email" placeholder="type email for finding or creating a user" required>
+											<div id="find-res" class="mt-1"></div>
+										</div>
+									</div>
+
+
 									<div class="col-lg-12">
 										<div class="form-group">
 											<label>Service<span class="text-danger">*</span></label><br>
@@ -106,7 +115,7 @@ $services = $this->db->get('services')->result();
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label><?php echo (!empty($user_language[$user_selected]['lg_Date'])) ? $user_language[$user_selected]['lg_Date'] : $default_language['en']['lg_Date']; ?> <span class="text-danger">*</span></label>
-											<input class="form-control bookingdate" type="text" name="bookingdate" id="bookingdate" required />
+											<input class="form-control bookingdate" type="text" name="bookingdate" id="offlineBookingdate" required />
 										</div>
 									</div>
 
@@ -135,7 +144,7 @@ $services = $this->db->get('services')->result();
 
 								<div class="submit-section">
 
-									<button class="btn btn-primary submit-btn submit_service_book" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" data-id="<?php echo $service_id; ?>" data-provider="<?php echo $service_details['user_id'] ?>" data-amount="<?php echo $service_amount; ?>" type="submit" id="submit" value="submit"><?php echo (!empty($user_language[$user_selected]['lg_Confirm_Booking'])) ? $user_language[$user_selected]['lg_Confirm_Booking'] : $default_language['en']['lg_Confirm_Booking']; ?></button>
+									<button class="btn btn-primary submit-btn submit_service_book" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" type="submit" id="submit" value="submit"><?php echo (!empty($user_language[$user_selected]['lg_Confirm_Booking'])) ? $user_language[$user_selected]['lg_Confirm_Booking'] : $default_language['en']['lg_Confirm_Booking']; ?></button>
 
 									<a class="btn btn-danger appoint-btncls" href="<?php echo base_url(); ?>all-services"><?php echo (!empty($user_language[$user_selected]['lg_Cancel_Booking'])) ? $user_language[$user_selected]['lg_Cancel_Booking'] : $default_language['en']['lg_Cancel_Booking']; ?></a>
 
@@ -148,6 +157,133 @@ $services = $this->db->get('services')->result();
 		</div>
 	</div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Create a user</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="account-content">
+					<div class="account-box">
+						<div class="login-right">
+							<form action="" method='post' id="new_third_page_user">
+								<div class="pop-input form-group">
+									<label><?php echo (!empty($user_language[$user_selected]['lg_Name'])) ? $user_language[$user_selected]['lg_Name'] : $default_language['en']['lg_Name']; ?></label>
+									<input type="text" class="form-control" name="userName" id='user_name'>
+								</div>
+								<div class="pop-input form-group">
+									<label><?php echo (!empty($user_language[$user_selected]['lg_Email'])) ? $user_language[$user_selected]['lg_Email'] : $default_language['en']['lg_Email']; ?></label>
+									<input type="email" class="form-control" name="userEmail" id='user_email'>
+									<input type="hidden" class="form-control" name="user_logintype" id='user_logintype' value="<?php echo $login_type ?>">
+								</div>
+								<?php
+								if ($login_type == 'email') {
+								?>
+									<div class="pop-input form-group">
+										<label><?php echo (!empty($user_language[$user_selected]['lg_Password'])) ? $user_language[$user_selected]['lg_Password'] : $default_language['en']['lg_Password']; ?></label>
+										<input type="password" class="form-control" name="userPassword" id='user_password'>
+									</div>
+								<?php } ?>
+								<div class="pop-input form-group">
+									<label><?php echo (!empty($user_language[$user_selected]['lg_Mobile_Number'])) ? $user_language[$user_selected]['lg_Mobile_Number'] : $default_language['en']['lg_Mobile_Number']; ?> <span class="manidatory">*</span></label>
+									<div class="row">
+										<div class="col-12 pe-0">
+											<input type="hidden" name="login_mode" id="login_mode" value="1">
+											<input type="hidden" name="csrf_token_name" value="<?php echo $this->security->get_csrf_hash(); ?>" id="login_csrf">
+											<input class="form-control userMobile" type="text" name="userMobile" id="user_mobile" placeholder="<?php echo (!empty($user_language[$user_selected]['lg_Mobile_Number'])) ? $user_language[$user_selected]['lg_Mobile_Number'] : $default_language['en']['lg_Mobile_Number']; ?>">
+											<span id="mobile_no_error3"></span>
+										</div>
+									</div>
+								</div>
+								<div class="pop-inputradio form-group">
+									<div class="form-group">
+										<label><?php echo (!empty($user_language[$user_selected]['lg_gender'])) ? $user_language[$user_selected]['lg_gender'] : $default_language['en']['lg_gender']; ?></label>
+										<ul>
+											<li>
+												<div class="custom-radio">
+													<label>
+														<input type="radio" value="1" name="gender" checked> <?php echo (!empty($user_language[$user_selected]['lg_Male'])) ? $user_language[$user_selected]['lg_Male'] : $default_language['en']['lg_Male']; ?>
+														<span></span>
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="custom-radio">
+													<label>
+														<input type="radio" name="gender" value="2"> <?php echo (!empty($user_language[$user_selected]['lg_Female'])) ? $user_language[$user_selected]['lg_Female'] : $default_language['en']['lg_Female']; ?>
+														<span></span>
+													</label>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="pop-inputcheck form-group mb-3">
+									<ul>
+										<li>
+											<div class="company-path checkworking">
+												<input type="checkbox" class="custom-control-input" name="agree_checkbox_user" id="agree_checkbox_user" value="1">
+												<label class="custom-control-label" for="agree_checkbox_user"><?php echo (!empty($user_language[$user_selected]['lg_agree'])) ? $user_language[$user_selected]['lg_agree'] : $default_language['en']['lg_agree']; ?> <?php echo settingValue('website_name') ?></label> <a tabindex="-1" href="<?php echo base_url() . 'privacy'; ?>"><?php echo (!empty($user_language[$user_selected]['lg_Privacy_Policy'])) ? $user_language[$user_selected]['lg_Privacy_Policy'] : $default_language['en']['lg_Privacy_Policy']; ?></a> &amp; <a tabindex="-1" href="<?php echo base_url() . 'terms-conditions'; ?>"> <?php echo (!empty($user_language[$user_selected]['lg_Terms'])) ? $user_language[$user_selected]['lg_Terms'] : $default_language['en']['lg_Terms']; ?>.</a>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="form-group">
+									<button id="registration_submit_user" type="submit" class="btn btn-login"><?php echo (!empty($user_language[$user_selected]['lg_Register'])) ? $user_language[$user_selected]['lg_Register'] : $default_language['en']['lg_Register']; ?></button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		// Delay function to limit AJAX calls while typing
+		var delayTimer;
+
+		$('#user_email').focusout(function() {
+			clearTimeout(delayTimer);
+			var email = $(this).val().trim();
+			const baseUrl = '<?= base_url(); ?>';
+			const csrfToken = $("#csrf_token").val();
+
+			if (email !== '') {
+				delayTimer = setTimeout(function() {
+					// Perform AJAX call
+					$.ajax({
+						url: `${baseUrl}user/appointment/check_user_availability`,
+						type: "POST",
+						data: {
+							email: email,
+							csrf_token_name: csrfToken,
+						},
+						dataType: 'json',
+						success: function(response) {
+							if (response.status) {
+								console.log(response.data);
+								$('#find-res').html('<span class="text-success">A user selected -> Name: ' + response.data.name + ', ID: ' + response.data.id + '</span>');
+							} else {
+								$('#find-res').html('<span class="text-danger">User no found with this email.</span> <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Now</button>');
+							}
+						},
+						error: function(xhr, status, error) {
+							console.error('AJAX request failed: ' + error);
+						}
+					});
+				}, 500); // Set your desired delay in milliseconds (e.g., 500ms)
+			}
+		});
+	});
+</script>
 
 <script>
 	$(document).ready(function() {
@@ -173,7 +309,7 @@ $services = $this->db->get('services')->result();
 				var service_id = $('#offline_service_id').val();
 				var shop_id = $('#shop_id').val();
 				var service_location = $('#service_location').val();
-				var bookingdate = $('#bookingdate').val();
+				var bookingdate = $('#offlineBookingdate').val();
 				var booking_time = $('#from_time').val();
 				var booking_amount = $('#booking_amount').val();
 				var service_amount = $('#service_amount').val();

@@ -1002,7 +1002,7 @@ class Service extends CI_Controller
         $interval = new DateInterval('P1D'); // 1 day interval
         $date_range = new DatePeriod($start_date, $interval, $end_date->modify('+1 day')); // +1 day to include end date
 
-        $booked_slots = $this->service->get_booked_slots($service_id, $provider_id);
+        $booked_slots = $this->service->get_booked_slots($service_id);
 
         $bookedSlotsArray = [];
 

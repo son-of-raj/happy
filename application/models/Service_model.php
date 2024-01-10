@@ -105,13 +105,12 @@ class Service_model extends CI_Model
   }
 
 
-  public function get_booked_slots($service_id, $provider_id)
+  public function get_booked_slots($service_id)
   {
     $service_statuses = array(1, 2, 3, 4);
 
     $this->db->where('service_id', $service_id);
-    $this->db->where('provider_id', $provider_id);
-    $this->db->where_in('status', $service_statuses);
+    $this->db->where('status!=', 5);
 
     return $this->db->get('book_service')->result_array();
   }
