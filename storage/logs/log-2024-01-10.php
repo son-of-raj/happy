@@ -41,3 +41,14 @@ ERROR - 2024-01-10 01:43:44 --> 404 Page Not Found: Assets/js
 ERROR - 2024-01-10 01:45:18 --> 404 Page Not Found: Assets/js
 ERROR - 2024-01-10 01:46:07 --> 404 Page Not Found: Assets/js
 ERROR - 2024-01-10 01:46:32 --> 404 Page Not Found: Assets/js
+ERROR - 2024-01-10 23:26:51 --> 404 Page Not Found: Your_backend_endpoint_here/index
+ERROR - 2024-01-10 23:26:53 --> 404 Page Not Found: Your_backend_endpoint_here/index
+ERROR - 2024-01-10 23:37:17 --> 404 Page Not Found: Assets/js
+ERROR - 2024-01-10 23:39:43 --> 404 Page Not Found: Assets/js
+ERROR - 2024-01-10 23:41:42 --> 404 Page Not Found: Assets/js
+ERROR - 2024-01-10 23:43:29 --> 404 Page Not Found: Assets/js
+ERROR - 2024-01-10 23:44:57 --> 404 Page Not Found: Assets/js
+ERROR - 2024-01-10 23:46:42 --> 404 Page Not Found: Assets/js
+ERROR - 2024-01-10 23:47:25 --> 404 Page Not Found: Assets/js
+ERROR - 2024-01-10 23:49:16 --> 404 Page Not Found: Assets/js
+ERROR - 2024-01-10 23:50:45 --> 404 Page Not Found: Assets/js

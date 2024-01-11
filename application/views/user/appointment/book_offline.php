@@ -171,7 +171,7 @@ $services = $this->db->get('services')->result();
 				<div class="account-content">
 					<div class="account-box">
 						<div class="login-right">
-							<form action="" method='post' id="new_third_page_user">
+							<form action="" method='post' id="offlie_user_create">
 								<div class="pop-input form-group">
 									<label><?php echo (!empty($user_language[$user_selected]['lg_Name'])) ? $user_language[$user_selected]['lg_Name'] : $default_language['en']['lg_Name']; ?></label>
 									<input type="text" class="form-control" name="userName" id='user_name'>
@@ -223,16 +223,6 @@ $services = $this->db->get('services')->result();
 										</ul>
 									</div>
 								</div>
-								<div class="pop-inputcheck form-group mb-3">
-									<ul>
-										<li>
-											<div class="company-path checkworking">
-												<input type="checkbox" class="custom-control-input" name="agree_checkbox_user" id="agree_checkbox_user" value="1">
-												<label class="custom-control-label" for="agree_checkbox_user"><?php echo (!empty($user_language[$user_selected]['lg_agree'])) ? $user_language[$user_selected]['lg_agree'] : $default_language['en']['lg_agree']; ?> <?php echo settingValue('website_name') ?></label> <a tabindex="-1" href="<?php echo base_url() . 'privacy'; ?>"><?php echo (!empty($user_language[$user_selected]['lg_Privacy_Policy'])) ? $user_language[$user_selected]['lg_Privacy_Policy'] : $default_language['en']['lg_Privacy_Policy']; ?></a> &amp; <a tabindex="-1" href="<?php echo base_url() . 'terms-conditions'; ?>"> <?php echo (!empty($user_language[$user_selected]['lg_Terms'])) ? $user_language[$user_selected]['lg_Terms'] : $default_language['en']['lg_Terms']; ?>.</a>
-											</div>
-										</li>
-									</ul>
-								</div>
 								<div class="form-group">
 									<button id="registration_submit_user" type="submit" class="btn btn-login"><?php echo (!empty($user_language[$user_selected]['lg_Register'])) ? $user_language[$user_selected]['lg_Register'] : $default_language['en']['lg_Register']; ?></button>
 								</div>
@@ -244,6 +234,46 @@ $services = $this->db->get('services')->result();
 		</div>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function() {
+		$('#offlie_user_create').validate({
+			rules: {
+				userName: {
+					required: true
+				},
+				userEmail: {
+					required: true,
+					email: true
+				},
+				userPassword: {
+					required: true
+				},
+				userMobile: {
+					required: true,
+				}
+			},
+			messages: {},
+			submitHandler: function(form) {
+				const baseUrl = '<?= base_url(); ?>';
+				const csrfToken = $("#csrf_token").val();
+				$.ajax({
+					type: 'POST',
+					url: `${baseUrl}user/appointment/check_user_availability`,
+					data: $(form).serialize(),
+					dataType: 'json',
+					success: function(response) {
+						console.log('Form submitted successfully');
+					},
+					error: function(xhr, status, error) {
+						console.error('Form submission failed: ' + error);
+					}
+				});
+				return false;
+			}
+		});
+	});
+</script>
 
 <script>
 	$(document).ready(function() {
