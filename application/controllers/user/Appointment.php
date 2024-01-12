@@ -218,7 +218,7 @@ class Appointment extends CI_Controller
 
 		$inputs['service_id']    = $service_id;
 		$inputs['provider_id']   = $records['user_id'];
-		$inputs['user_id']       = $this->session->userdata('id');
+		$inputs['user_id']       = $this->input->post('user_id');
 		$inputs['slots']     = $slots;
 
 		$inputs['booking_amnt'] = $final_amount;
@@ -2739,6 +2739,47 @@ class Appointment extends CI_Controller
 			// Handle invalid or missing email
 			http_response_code(400); // Bad Request
 			echo json_encode(['error' => 'Invalid email']);
+		}
+	}
+
+	public function create_user_offline()
+	{
+
+		$this->load->model('user_login_model', 'user_login');
+		$password = '123456';
+		$user_details['mobileno'] = $this->input->post("userMobile");
+		$user_details['email'] = $this->input->post("userEmail");
+		$user_details['name'] = $this->input->post("userName");
+		$user_details['country_code'] = $this->input->post("countryCode");
+		$user_details['password'] = md5($password);
+		$user_details['currency_code'] = "INR";
+
+		$is_available = $this->user_login->check_user_emailid($user_details['email']);
+		$is_available_mobileno = $this->user_login->check_user_mobileno($user_details['mobileno']);
+		$is_available_provider = $this->user_login->check_provider_email($user_details['email']);
+		$is_available_mobile_provider = $this->user_login->check_mobile_no($user_details['mobileno']);
+
+
+
+		if ($is_available == 0 && $is_available_mobileno == 0 && $is_available_provider == 0 && $is_available_mobile_provider == 0) {
+			$result = $this->user_login->user_signup($user_details);
+			if (!empty($result)) {
+				$res = array(
+					'status' => 200,
+					'data' => $result
+				);
+			} else {
+				$res = array(
+					'error' => 'Something Went wrong',
+					'status' => 401
+				);
+			}
+
+			header('Content-Type: application/json');
+			echo json_encode($res);
+		} else {
+			http_response_code(401);
+			echo json_encode(['error' => 'Something Went wrong', 'status' => 401]);
 		}
 	}
 }

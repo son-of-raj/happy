@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2023 at 04:43 PM
+-- Generation Time: Jan 12, 2024 at 02:50 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -1270,7 +1270,18 @@ INSERT INTO `book_service` (`id`, `service_id`, `provider_id`, `user_id`, `shop_
 (17, 3, 1, 1, 1, '0', 'Bhadravathi', '1970-01-01', '50', 'INR', 'old type', '05:30:00', '05:30:00', '[\"2023-12-24, 12:00 AM - 12:00 PM\",\"2023-12-24, 12:00 PM - 12:00 AM\",\"2023-12-25, 12:00 AM - 12:00 PM\"]', '', 1, '', '', 2, 0, NULL, '2023-12-23', '15:41:47', 0, 1, 2, '', 0, '0', NULL, NULL, 0, 0, 0, 0, 150, 0, 90, '', NULL, 0, 0, NULL, 0, '2023-12-23 15:41:47', 0, 'cod'),
 (18, 3, 1, 1, 1, '0', 'Bhadravathi', '1970-01-01', '50', 'INR', 'old type', '05:30:00', '05:30:00', '[\"2023-12-24, 12:00 AM - 12:00 PM\",\"2023-12-24, 12:00 PM - 12:00 AM\",\"2023-12-25, 12:00 AM - 12:00 PM\",\"2023-12-25, 12:00 PM - 12:00 AM\"]', '', 1, '', '', 2, 0, NULL, '2023-12-23', '15:43:46', 0, 1, 6, '', 0, '0', NULL, NULL, 0, 0, 0, 0, 200, 0, 120, '', NULL, 0, 0, NULL, 0, '2023-12-25 21:05:14', 0, 'cod'),
 (19, 3, 1, 1, 1, '0', 'Bhadravathi', '1970-01-01', '50', 'INR', 'old type', '05:30:00', '05:30:00', '[\"2023-12-23, 12:00 PM - 12:00 AM\",\"2023-12-24, 12:00 PM - 12:00 AM\",\"2023-12-25, 12:00 PM - 12:00 AM\"]', '', 1, '', '', 2, 0, NULL, '2023-12-23', '15:45:54', 0, 1, 6, '2', 0, '0', NULL, NULL, 0, 0, 0, 0, 150, 90, 90, '', NULL, 0, 0, NULL, 0, '2023-12-25 21:06:01', 0, 'cod'),
-(20, 4, 1, 1, 1, '0', 'Bhadravathi', '1970-01-01', '500', 'INR', 'old type', '05:30:00', '05:30:00', '[\"2023-12-24, 12:00 PM - 12:00 AM\",\"2023-12-25, 12:00 PM - 12:00 AM\",\"2023-12-26, 12:00 AM - 12:00 PM\"]', '', 1, '', '', 2, 0, NULL, '2023-12-24', '11:36:13', 0, 1, 6, '2', 0, '0', NULL, NULL, 0, 0, 0, 0, 1500, 300, 300, '', NULL, 0, 0, NULL, 0, '2023-12-24 11:42:37', 0, 'cod');
+(20, 4, 1, 1, 1, '0', 'Bhadravathi', '1970-01-01', '500', 'INR', 'old type', '05:30:00', '05:30:00', '[\"2023-12-24, 12:00 PM - 12:00 AM\",\"2023-12-25, 12:00 PM - 12:00 AM\",\"2023-12-26, 12:00 AM - 12:00 PM\"]', '', 1, '', '', 2, 0, NULL, '2023-12-24', '11:36:13', 0, 1, 6, '2', 0, '0', NULL, NULL, 0, 0, 0, 0, 1500, 300, 300, '', NULL, 0, 0, NULL, 0, '2023-12-24 11:42:37', 0, 'cod'),
+(21, 4, 1, 1, 1, '', '', '2024-01-09', '500', 'INR', 'old type', '00:00:00', '00:00:00', '[\"2024-01-09, 12:00 PM - 12:00 AM\",\"2024-01-10, 12:00 AM - 12:00 PM\",\"2024-01-11, 12:00 AM - 12:00 PM\"]', '', 0, '', '', 2, 0, NULL, '2024-01-09', '13:58:07', 0, 1, 8, NULL, 0, '0', NULL, NULL, 0, 0, 0, 0, 1500, 1500, 165, NULL, NULL, 0, 0, NULL, 0, '2024-01-09 13:58:07', 0, NULL),
+(22, 4, 1, 1, 1, '', 'Bhadravathi', '2024-01-09', '500', 'INR', 'old type', '00:00:00', '00:00:00', '[\"2024-01-09, 12:00 PM - 12:00 AM\",\"2024-01-11, 12:00 AM - 12:00 PM\",\"2024-01-12, 12:00 AM - 12:00 PM\"]', '', 0, '', '', 2, 0, NULL, '2024-01-09', '14:07:08', 0, 1, 6, NULL, 0, '0', NULL, NULL, 0, 0, 0, 0, 1500, 1500, 165, NULL, NULL, 0, 0, NULL, 0, '2024-01-09 14:08:39', 0, NULL),
+(23, 4, 1, 1, 1, '1', 'Bhadravathi', '2024-01-09', '500', 'INR', 'old type', '00:00:00', '00:00:00', '[\"2024-01-09, 12:00 AM - 12:00 PM\",\"2024-01-09, 12:00 PM - 12:00 AM\",\"2024-01-10, 12:00 AM - 12:00 PM\",\"2024-01-10, 12:00 PM - 12:00 AM\",\"2024-01-11, 12:00 AM - 12:00 PM\",\"2024-01-11, 12:00 PM - 12:00 AM\"]', 'test', 0, '', '', 2, 0, NULL, '2024-01-09', '14:09:22', 0, 1, 2, NULL, 0, '0', NULL, NULL, 0, 0, 0, 0, 3000, 3000, 330, NULL, NULL, 0, 0, NULL, 0, '2024-01-09 14:09:22', 0, NULL),
+(24, 4, 1, 1, 1, '1', 'Bhadravathi', '2024-01-09', '500', 'INR', 'old type', '00:00:00', '00:00:00', '[\"2024-01-09, 12:00 PM - 12:00 AM\",\"2024-01-10, 12:00 PM - 12:00 AM\",\"2024-01-11, 12:00 AM - 12:00 PM\"]', '', 0, '', '', 2, 0, NULL, '2024-01-09', '14:12:02', 0, 1, 2, NULL, 0, '0', NULL, NULL, 0, 0, 0, 0, 1500, 1500, 165, NULL, NULL, 0, 0, NULL, 0, '2024-01-09 14:12:02', 0, NULL),
+(25, 4, 1, 1, 1, '1', 'Bhadravathi', '2024-01-09', '500', 'INR', 'old type', '00:00:00', '00:00:00', '[\"2024-01-10, 12:00 AM - 12:00 PM\",\"2024-01-10, 12:00 PM - 12:00 AM\",\"2024-01-11, 12:00 AM - 12:00 PM\"]', '', 0, '', '', 2, 0, NULL, '2024-01-09', '14:14:26', 0, 1, 2, NULL, 0, '0', NULL, NULL, 0, 0, 0, 0, 1500, 1500, 165, NULL, NULL, 0, 0, NULL, 0, '2024-01-09 14:14:26', 0, NULL),
+(26, 4, 1, 1, 1, '1', 'Bhadravathi', '2024-01-09', '500', 'INR', 'old type', '00:00:00', '00:00:00', '[\"2024-01-09, 12:00 PM - 12:00 AM\",\"2024-01-10, 12:00 PM - 12:00 AM\",\"2024-01-12, 12:00 PM - 12:00 AM\"]', '', 0, '', '', 2, 0, NULL, '2024-01-09', '14:15:43', 0, 1, 2, NULL, 0, '0', NULL, NULL, 0, 0, 0, 0, 1500, 1500, 165, NULL, NULL, 0, 0, NULL, 0, '2024-01-09 14:15:43', 0, NULL),
+(27, 3, 1, 1, 1, '1', 'Bhadravathi', '2024-01-12', '50', 'INR', 'old type', '00:00:00', '00:00:00', '[\"2024-01-12, 12:00 PM - 12:00 AM\",\"2024-01-14, 12:00 AM - 12:00 PM\"]', '', 0, '', '', 2, 0, NULL, '2024-01-12', '18:28:55', 0, 1, 2, NULL, 0, '0', NULL, NULL, 0, 0, 0, 0, 100, 100, 60, NULL, NULL, 0, 0, NULL, 0, '2024-01-12 18:28:55', 0, NULL),
+(28, 4, 1, 4, 1, '1', 'Bhadravathi', '2024-01-12', '500', 'INR', 'old type', '00:00:00', '00:00:00', '[\"2024-01-14, 12:00 AM - 12:00 PM\",\"2024-01-15, 12:00 PM - 12:00 AM\"]', '', 0, '', '', 2, 0, NULL, '2024-01-12', '19:02:37', 0, 1, 2, NULL, 0, '0', NULL, NULL, 0, 0, 0, 0, 1000, 1000, 110, NULL, NULL, 0, 0, NULL, 0, '2024-01-12 19:02:37', 0, NULL),
+(29, 4, 1, 4, 1, '1', 'Bhadravathi', '2024-01-12', '500', 'INR', 'old type', '00:00:00', '00:00:00', '[\"2024-01-13, 12:00 PM - 12:00 AM\",\"2024-01-15, 12:00 AM - 12:00 PM\"]', '', 0, '', '', 2, 0, NULL, '2024-01-12', '19:07:31', 0, 1, 2, NULL, 0, '0', NULL, NULL, 0, 0, 0, 0, 1000, 1000, 110, NULL, NULL, 0, 0, NULL, 0, '2024-01-12 19:07:31', 0, NULL),
+(30, 4, 1, 4, 1, '1', 'Bhadravathi', '2024-01-12', '500', 'INR', 'old type', '00:00:00', '00:00:00', '[\"2024-01-13, 12:00 AM - 12:00 PM\",\"2024-01-14, 12:00 PM - 12:00 AM\"]', '', 0, '', '', 2, 0, NULL, '2024-01-12', '19:08:02', 0, 1, 6, NULL, 0, '0', NULL, NULL, 0, 0, 0, 0, 1000, 1000, 110, NULL, NULL, 0, 0, NULL, 0, '2024-01-12 19:09:08', 0, NULL),
+(31, 4, 1, 11, 1, '1', 'Bhadravathi', '2024-01-12', '500', 'INR', 'old type', '00:00:00', '00:00:00', '[\"2024-01-16, 12:00 AM - 12:00 PM\",\"2024-01-16, 12:00 PM - 12:00 AM\"]', '', 0, '', '', 2, 0, NULL, '2024-01-12', '19:11:32', 0, 1, 2, NULL, 0, '0', NULL, NULL, 0, 0, 0, 0, 1000, 1000, 110, NULL, NULL, 0, 0, NULL, 0, '2024-01-12 19:11:32', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -51387,7 +51398,7 @@ CREATE TABLE `providers` (
 --
 
 INSERT INTO `providers` (`id`, `name`, `email`, `password`, `mobileno`, `country_code`, `currency_code`, `share_code`, `category`, `subcategory`, `profile_img`, `commercial_reg_image`, `token`, `dob`, `otp`, `account_holder_name`, `account_number`, `account_iban`, `bank_name`, `bank_address`, `sort_code`, `routing_number`, `account_ifsc`, `created_at`, `updated_at`, `status`, `delete_status`, `usertype`, `type`, `pwd`, `last_login`, `last_logout`, `is_agree`, `is_online`, `qrcode_path`, `homeservice_fee`, `homeservice_arrival`, `allow_rewards`, `booking_reward_count`, `commercial_verify`) VALUES
-(1, 'Akash Photography', 'akashgr64@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '8904589390', '91', 'INR', NULL, 0, 0, '', 'uploads/commercial_reg_image/1692429327sample.pdf', '', '1995-06-25', '', 'Akash GR', '7878787878787878', 'HDFC12345', 'HDFC', 'Bhadravathi', '', '', 'HDFC12345', '2023-08-19 12:37:28', '2023-08-19 14:39:22', 1, '0', '', 1, '', '2023-12-25 20:47:43', '2023-12-25 21:05:24', NULL, 2, '', 0, 40, 0, 0, 2),
+(1, 'Akash Photography', 'akashgr64@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '8904589390', '91', 'INR', NULL, 0, 0, '', 'uploads/commercial_reg_image/1692429327sample.pdf', '', '1995-06-25', '', 'Akash GR', '7878787878787878', 'HDFC12345', 'HDFC', 'Bhadravathi', '', '', 'HDFC12345', '2023-08-19 12:37:28', '2023-08-19 14:39:22', 1, '0', '', 1, '', '2024-01-12 18:27:06', '2024-01-07 23:48:47', NULL, 1, '', 0, 40, 0, 0, 2),
 (2, 'vendor1@example.com', 'vendor1@example.com', 'e10adc3949ba59abbe56e057f20f883e', '9999999999', '91', NULL, NULL, 0, 0, '', '', '', NULL, '', '', '', '', '', '', '', '', '', '2023-08-20 21:05:10', '0000-00-00 00:00:00', 1, '0', '', 1, '', '2023-08-20 21:07:07', NULL, NULL, 1, '', 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
@@ -51665,10 +51676,10 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `user_id`, `service_title`, `currency_code`, `service_sub_title`, `service_amount`, `booking_amount`, `category`, `subcategory`, `sub_subcategory`, `about`, `shop_id`, `staff_id`, `service_offered`, `service_location`, `service_latitude`, `service_longitude`, `service_image`, `service_details_image`, `thumb_image`, `mobile_image`, `duration`, `duration_in`, `autoschedule`, `autoschedule_days`, `autoschedule_session`, `service_for`, `service_for_userid`, `status`, `total_views`, `rating`, `rating_count`, `admin_verification`, `created_at`, `updated_at`, `deleted_reason`, `created_by`) VALUES
-(1, 1, 'Model Photoshoot', 'INR', '', 200, 0, '1', '', '', 'NA', '1', '1', '[\"\"]', 'Bhadravathi', '', '', '', '', '', '', 180, 'min(s)', 0, 0, 0, 0, 0, 1, 22, '', '', NULL, '2023-08-19 13:09:44', '2023-08-19 13:21:01', '', 'provider'),
-(2, 1, 'Kids Photography', 'INR', '', 2000, 0, '1', '', '', 'NA', '1', '1', '[\"\"]', 'Bhadravathi', '', '', '', '', '', '', 100, 'min(s)', 0, 0, 0, 0, 0, 1, 36, '', '', NULL, '2023-08-19 13:35:32', '2023-08-24 23:15:57', '', 'provider'),
-(3, 1, 'Test', 'INR', NULL, 50, 30, '1', '', '', 'sdfdsa', '1', '', '', 'Bhadravathi', '', '', 'uploads/services/se_full_1703325863screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 'uploads/services/de_full_1703325863screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 'uploads/services/th_full_1703325863screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 'uploads/services/mo_full_1703325863screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 0, 'min(s)', 0, 0, 0, 0, 0, 1, 6, '', '', NULL, '2023-12-23 15:34:24', '2023-12-23 15:34:24', '', 'provider'),
-(4, 1, 'Test service', 'INR', NULL, 500, 100, '1', '', '', 'Test services description', '1', '', '', 'Bhadravathi', '', '', 'uploads/services/se_full_1703397855screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 'uploads/services/de_full_1703397855screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 'uploads/services/th_full_1703397855screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 'uploads/services/mo_full_1703397855screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 0, 'min(s)', 0, 0, 0, 0, 0, 1, 5, '', '', NULL, '2023-12-24 11:34:17', '2023-12-24 11:34:17', '', 'provider');
+(1, 1, 'Model Photoshoot', 'INR', '', 200, 0, '1', '', '', 'NA', '1', '1', '[\"\"]', 'Bhadravathi', '', '', '', '', '', '', 180, 'min(s)', 0, 0, 0, 0, 0, 1, 24, '', '', NULL, '2023-08-19 13:09:44', '2023-08-19 13:21:01', '', 'provider'),
+(2, 1, 'Kids Photography', 'INR', '', 2000, 0, '1', '', '', 'NA', '1', '1', '[\"\"]', 'Bhadravathi', '', '', '', '', '', '', 100, 'min(s)', 0, 0, 0, 0, 0, 1, 38, '', '', NULL, '2023-08-19 13:35:32', '2023-08-24 23:15:57', '', 'provider'),
+(3, 1, 'Test', 'INR', NULL, 50, 30, '1', '', '', 'sdfdsa', '1', '1', '', 'Bhadravathi', '', '', 'uploads/services/se_full_1703325863screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 'uploads/services/de_full_1703325863screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 'uploads/services/th_full_1703325863screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 'uploads/services/mo_full_1703325863screencapture-ypskeclient-login-2023-12-13-01_18_33.png', 0, 'min(s)', 0, 0, 0, 0, 0, 1, 7, '', '', NULL, '2023-12-23 15:34:24', '2023-12-23 15:34:24', '', 'provider'),
+(4, 1, 'Test service', 'INR', '', 500, 55, '1', '', '', 'Test services description', '1', '1', '[\"\"]', 'Bhadravathi', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 1, 7, '', '', NULL, '2023-12-24 11:34:17', '2023-12-31 02:51:37', '', 'provider');
 
 -- --------------------------------------------------------
 
@@ -51825,7 +51836,7 @@ CREATE TABLE `shops` (
 --
 
 INSERT INTO `shops` (`id`, `provider_id`, `shop_code`, `shop_name`, `description`, `country_code`, `contact_no`, `email`, `tax_allow`, `tax_number`, `address`, `country`, `state`, `city`, `postal_code`, `shop_location`, `shop_latitude`, `shop_longitude`, `all_days`, `availability`, `category`, `subcategory`, `sub_subcategory`, `status`, `total_views`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 'SHOP1Itpf3', 'Akash Photography', 'Studio', '91', '8904589390', 'akashgr64@gmail.com', 0, NULL, 'asasas', 101, 17, 1559, 577301, 'Bhadravathi', '', '', 1, '[{\"day\":1,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":2,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":3,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":4,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":5,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":6,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":7,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"}]', 1, 0, 0, 1, 38, 1, '2023-08-19 13:04:37', '2023-08-19 13:04:37');
+(1, 1, 'SHOP1Itpf3', 'Akash Photography', 'Studio', '91', '8904589390', 'akashgr64@gmail.com', 0, NULL, 'asasas', 101, 17, 1559, 577301, 'Bhadravathi', '', '', 1, '[{\"day\":1,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":2,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":3,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":4,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":5,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":6,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"},{\"day\":7,\"from_time\":\"00:00  AM\",\"to_time\":\"12:00 \"}]', 1, 0, 0, 1, 55, 1, '2023-08-19 13:04:37', '2023-08-19 13:04:37');
 
 -- --------------------------------------------------------
 
@@ -56512,7 +56523,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `mobileno`, `country_code`, `currency_code`, `otp`, `share_code`, `email`, `password`, `profile_img`, `dob`, `gender`, `token`, `status`, `usertype`, `type`, `pwd`, `account_holder_name`, `account_number`, `account_iban`, `bank_name`, `bank_address`, `sort_code`, `routing_number`, `account_ifsc`, `last_login`, `created_at`, `updated_at`, `is_agree`, `covid_vaccine`) VALUES
-(1, 'Test User 1', '7777777777', '91', 'INR', '', '11shlnuz', 'testuser1@example.com', 'e10adc3949ba59abbe56e057f20f883e', '', NULL, 1, '1hmrjQuRQTUhLzV', 1, 0, 2, '', '', '', '', '', '', '', '', '', '2023-08-19 19:07:50', '2023-08-19 13:37:50', '0000-00-00 00:00:00', 1, 2);
+(1, 'Test User 1', '7777777777', '91', 'INR', '', '11shlnuz', 'testuser1@example.com', 'e10adc3949ba59abbe56e057f20f883e', '', NULL, 1, '1hmrjQuRQTUhLzV', 1, 0, 2, '', '', '', '', '', '', '', '', '', '2023-08-19 19:07:50', '2023-08-19 13:37:50', '0000-00-00 00:00:00', 1, 2),
+(5, 'sdfsd', '234523432', '880', 'INR', '', NULL, 'mdmaasusque@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', NULL, 0, '58RONBxtjz4pUsG', 1, 0, 2, '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '2024-01-12 12:39:43', '0000-00-00 00:00:00', NULL, 0),
+(4, 'sdfsd', '456564', '880', 'INR', '', NULL, 'mdmaasuque@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', NULL, 0, '4yAeQ7frsXfvEuq', 1, 0, 2, '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '2024-01-12 12:36:34', '0000-00-00 00:00:00', NULL, 0),
+(6, 'sdfsd', '4566', '880', 'INR', '', NULL, 'mdmaasuqdsue@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', NULL, 0, '6vJGRLiIVMeh5W0', 1, 0, 2, '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '2024-01-12 12:41:18', '0000-00-00 00:00:00', NULL, 0),
+(7, 'sdfsd', '0145644', '1', 'INR', '', NULL, 'mdmaasusdfque@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', NULL, 0, '7twzUjZEa4KLCb2', 1, 0, 2, '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '2024-01-12 15:20:19', '0000-00-00 00:00:00', NULL, 0),
+(8, 'Test', '234323', '91', 'INR', '', NULL, 'samsu32@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', NULL, 0, '8wjTvEEZtqzR48z', 1, 0, 2, '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '2024-01-12 18:31:36', '0000-00-00 00:00:00', NULL, 0),
+(9, 'Test', '43253543', '1', 'INR', '', NULL, 'simakmart.shop@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', NULL, 0, '9knDUdR7EZG2TqF', 1, 0, 2, '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '2024-01-12 18:33:46', '0000-00-00 00:00:00', NULL, 0),
+(10, 'Test', '23423', '1', 'INR', '', NULL, 'mdmaasuqsdfsadfue@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', NULL, 0, '10dirlysLRG0m6dS', 1, 0, 2, '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '2024-01-12 18:34:41', '0000-00-00 00:00:00', NULL, 0),
+(11, 'New user', '4563456634', '91', 'INR', '', NULL, 'testmail@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', NULL, 0, '113PVcr0F8wdLd5w', 1, 0, 2, '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '2024-01-12 19:11:10', '0000-00-00 00:00:00', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -56650,7 +56669,14 @@ INSERT INTO `views` (`id`, `user_id`, `service_id`) VALUES
 (66, 12, 4),
 (67, 46, 4),
 (68, 32, 4),
-(69, 36, 4);
+(69, 36, 4),
+(70, 26, 3),
+(71, 27, 2),
+(72, 27, 1),
+(73, 65, 2),
+(74, 94, 4),
+(75, 11, 1),
+(76, 31, 4);
 
 -- --------------------------------------------------------
 
@@ -57443,7 +57469,7 @@ ALTER TABLE `blog_posts`
 -- AUTO_INCREMENT for table `book_service`
 --
 ALTER TABLE `book_service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `book_service_cod`
@@ -57941,7 +57967,7 @@ ALTER TABLE `theme_color_change`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user_address`
@@ -57959,7 +57985,7 @@ ALTER TABLE `user_billing_details`
 -- AUTO_INCREMENT for table `views`
 --
 ALTER TABLE `views`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `wallet_table`

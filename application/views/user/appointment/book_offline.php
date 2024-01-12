@@ -54,9 +54,10 @@ $services = $this->db->get('services')->result();
 								<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 								<div class="row">
 
-									<div class="col-lg-10">
+									<div class="col-lg-12">
 										<div class="form-group">
 											<label>User</label>
+											<span id="userFinding" style="float: right;"></span>
 											<input class="form-control" type="email" name="user_email" id="user_email" placeholder="type email for finding or creating a user" required>
 											<div id="find-res" class="mt-1"></div>
 										</div>
@@ -68,6 +69,7 @@ $services = $this->db->get('services')->result();
 											<label>Service<span class="text-danger">*</span></label><br>
 											<div>
 												<select id="offline_service_id" name="service_id" onchange="set_values_by_service(this.value)" class="form-control select addshopcls" required>
+													<option value="">Select Service</option>
 													<?php foreach ($services as $service) { ?>
 														<option value="<?php echo $service->id; ?>"><?php echo $service->service_title; ?></option>
 													<?php } ?>
@@ -140,11 +142,12 @@ $services = $this->db->get('services')->result();
 								</div>
 								<input type="hidden" id="service_rate" value="">
 								<input type="hidden" id="booking_rate" value="">
+								<input type="hidden" id="user_id" value="0">
 
 
 								<div class="submit-section">
 
-									<button class="btn btn-primary submit-btn submit_service_book" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" type="submit" id="submit" value="submit"><?php echo (!empty($user_language[$user_selected]['lg_Confirm_Booking'])) ? $user_language[$user_selected]['lg_Confirm_Booking'] : $default_language['en']['lg_Confirm_Booking']; ?></button>
+									<button class="btn btn-primary submit-btn submit_service_book" type="submit" id="submit" value="submit"><?php echo (!empty($user_language[$user_selected]['lg_Confirm_Booking'])) ? $user_language[$user_selected]['lg_Confirm_Booking'] : $default_language['en']['lg_Confirm_Booking']; ?></button>
 
 									<a class="btn btn-danger appoint-btncls" href="<?php echo base_url(); ?>all-services"><?php echo (!empty($user_language[$user_selected]['lg_Cancel_Booking'])) ? $user_language[$user_selected]['lg_Cancel_Booking'] : $default_language['en']['lg_Cancel_Booking']; ?></a>
 
@@ -178,17 +181,9 @@ $services = $this->db->get('services')->result();
 								</div>
 								<div class="pop-input form-group">
 									<label><?php echo (!empty($user_language[$user_selected]['lg_Email'])) ? $user_language[$user_selected]['lg_Email'] : $default_language['en']['lg_Email']; ?></label>
-									<input type="email" class="form-control" name="userEmail" id='user_email'>
+									<input type="email" class="form-control" name="userEmail" id='userEmail'>
 									<input type="hidden" class="form-control" name="user_logintype" id='user_logintype' value="<?php echo $login_type ?>">
 								</div>
-								<?php
-								if ($login_type == 'email') {
-								?>
-									<div class="pop-input form-group">
-										<label><?php echo (!empty($user_language[$user_selected]['lg_Password'])) ? $user_language[$user_selected]['lg_Password'] : $default_language['en']['lg_Password']; ?></label>
-										<input type="password" class="form-control" name="userPassword" id='user_password'>
-									</div>
-								<?php } ?>
 								<div class="pop-input form-group">
 									<label><?php echo (!empty($user_language[$user_selected]['lg_Mobile_Number'])) ? $user_language[$user_selected]['lg_Mobile_Number'] : $default_language['en']['lg_Mobile_Number']; ?> <span class="manidatory">*</span></label>
 									<div class="row">
@@ -223,6 +218,7 @@ $services = $this->db->get('services')->result();
 										</ul>
 									</div>
 								</div>
+								<span id="user_error"></span>
 								<div class="form-group">
 									<button id="registration_submit_user" type="submit" class="btn btn-login"><?php echo (!empty($user_language[$user_selected]['lg_Register'])) ? $user_language[$user_selected]['lg_Register'] : $default_language['en']['lg_Register']; ?></button>
 								</div>
@@ -257,13 +253,37 @@ $services = $this->db->get('services')->result();
 			submitHandler: function(form) {
 				const baseUrl = '<?= base_url(); ?>';
 				const csrfToken = $("#csrf_token").val();
+				var countryCodeVal = $(".iti__selected-flag .iti__selected-dial-code").html();
+				var countryCode = countryCodeVal.replace(/\+/g, '');
+
+				var formData = $(form).serializeArray();
+				formData.push({
+					name: "countryCode",
+					value: countryCode
+				});
 				$.ajax({
 					type: 'POST',
-					url: `${baseUrl}user/appointment/check_user_availability`,
-					data: $(form).serialize(),
+					url: `${baseUrl}user/appointment/create_user_offline`,
+					data: formData,
 					dataType: 'json',
 					success: function(response) {
-						console.log('Form submitted successfully');
+						if (response.status == 200) {
+
+							swal({
+								title: 'success',
+								text: "User created successfully",
+								icon: "success",
+								button: "okay",
+								closeOnEsc: false,
+								closeOnClickOutside: false,
+							}).then(function() {
+								$('#user_id').val(response.data.id);
+								$('#find-res').html('<span class="text-success"><b>A user selected -> Name: ' + response.data.name + ', ID: ' + response.data.id + '<b/></span>');
+								$('.btn-close').click();
+							});
+						} else {
+							$('#user_error').html(response.error);
+						}
 					},
 					error: function(xhr, status, error) {
 						console.error('Form submission failed: ' + error);
@@ -297,19 +317,24 @@ $services = $this->db->get('services')->result();
 							csrf_token_name: csrfToken,
 						},
 						dataType: 'json',
+						beforeSend: function() {
+							$('#userFinding').html('<i class="fa fa-spinner fa-spin"></i> user finding...');
+						},
 						success: function(response) {
+							$('#userFinding').html('');
 							if (response.status) {
-								console.log(response.data);
-								$('#find-res').html('<span class="text-success">A user selected -> Name: ' + response.data.name + ', ID: ' + response.data.id + '</span>');
+								$('#find-res').html('<span class="text-success"><b>A user selected -> Name: ' + response.data.name + ', ID: ' + response.data.id + '<b/></span>');
+								$('#user_id').val(response.data.id);
 							} else {
-								$('#find-res').html('<span class="text-danger">User no found with this email.</span> <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Now</button>');
+								$('#find-res').html('<span class="text-danger">User not found with this email.</span> <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Now</button>');
+								$('#userEmail').val(email);
 							}
 						},
 						error: function(xhr, status, error) {
 							console.error('AJAX request failed: ' + error);
 						}
 					});
-				}, 500); // Set your desired delay in milliseconds (e.g., 500ms)
+				}, 500);
 			}
 		});
 	});
@@ -324,7 +349,6 @@ $services = $this->db->get('services')->result();
 				service_location: "required",
 				bookingdate: "required",
 				from_time: "required"
-				// Add more validation rules as needed for other fields
 			},
 			messages: {
 				service_id: "Please select a service",
@@ -332,7 +356,6 @@ $services = $this->db->get('services')->result();
 				service_location: "Please enter a service location",
 				bookingdate: "Please select a booking date",
 				from_time: "Please select a time slot"
-				// Add more messages as needed for other fields
 			},
 			submitHandler: function(form) {
 				const baseUrl = '<?= base_url(); ?>';
@@ -343,15 +366,17 @@ $services = $this->db->get('services')->result();
 				var booking_time = $('#from_time').val();
 				var booking_amount = $('#booking_amount').val();
 				var service_amount = $('#service_amount').val();
+				var user_id = $('#user_id').val();
 				const csrfToken = $("#csrf_token").val();
 				const notes = $("#notes").val();
 				var service_at = 2;
-				// Perform AJAX submission
+				var btnText = $('#submit').html();
 				$.ajax({
 					type: "POST",
 					url: $(form).attr('action'), // Form action URL
 					data: {
 						service_id: service_id,
+						user_id: user_id,
 						shop_id: shop_id,
 						service_location: service_location,
 						bookingdate: bookingdate,
@@ -365,10 +390,10 @@ $services = $this->db->get('services')->result();
 					},
 					dataType: "JSON",
 					beforeSend: function() {
-						$('#load_div').html('<i class="fa fa-spinner fa-spin"></i> Processing Order...');
+						$('#submit').html('<i class="fa fa-spinner fa-spin"></i> Processing Order...');
 					},
 					success: function(response) {
-						console.log("Form submitted successfully: " + response);
+						$('#submit').html(btnText);
 						swal({
 							title: response.title,
 							text: response.msg,
@@ -381,12 +406,10 @@ $services = $this->db->get('services')->result();
 						});
 					},
 					error: function(xhr, status, error) {
-						// Handle errors if the submission fails
 						console.error("Form submission failed: " + error);
-						// Display an error message or perform any necessary actions
 					}
 				});
-				return false; // Prevent default form submission
+				return false;
 			}
 		});
 	});
