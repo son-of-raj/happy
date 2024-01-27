@@ -1028,7 +1028,11 @@ if ($type == 'user') {
                                             <p class="text-muted mb-0">Admin</p>
                                         </div>
                                     </div>
-                                    <a class="dropdown-item" href="<?php echo base_url(); ?>dashboard"><?php echo (!empty($user_language[$user_selected]['lg_Dashboard'])) ? $user_language[$user_selected]['lg_Dashboard'] : $default_language['en']['lg_Dashboard']; ?></a>
+                                    <a class="dropdown-item" href="<?php echo base_url(); ?><?php if ($this->session->userdata('userType') == 'manager') {
+                                                                                                echo 'manager-dashboard';
+                                                                                            } else {
+                                                                                                echo 'dashboard';
+                                                                                            } ?>"><?php echo (!empty($user_language[$user_selected]['lg_Dashboard'])) ? $user_language[$user_selected]['lg_Dashboard'] : $default_language['en']['lg_Dashboard']; ?></a>
                                     <a class="dropdown-item" href="<?php echo base_url() ?>logout"><?php echo (!empty($user_language[$user_selected]['lg_Logout'])) ? $user_language[$user_selected]['lg_Logout'] : $default_language['en']['lg_Logout']; ?></a>
                                 </div>
                             </li>

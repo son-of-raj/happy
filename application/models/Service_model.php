@@ -412,12 +412,27 @@ class Service_model extends CI_Model
     $this->db->where('provider_id', $provider_id);
     return $this->db->count_all_results('book_service');
   }
+
+  public function booking_count_by_manager($manager_id)
+  {
+
+    $this->db->where('staff_id', $manager_id);
+    return $this->db->count_all_results('book_service');
+  }
   public function services_count($user_id)
   {
 
     $this->db->where(array('user_id' => $user_id, 'status!=' => '0'));
     return $this->db->count_all_results('services');
   }
+
+  public function services_count_by_manager($manager_id)
+  {
+
+    $this->db->where(array('staff_id' => $manager_id, 'status!=' => '0'));
+    return $this->db->count_all_results('services');
+  }
+
   public function completed_booking($provider_id)
   {
 

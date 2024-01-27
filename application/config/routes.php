@@ -295,6 +295,8 @@ $route['user_bookingstatus/(:any)'] = 'user/service/user_bookingstatus/$1';
 $route['book-service/(:any)'] = 'user/service/book_service/$1';
 $route['user-dashboard'] = 'user/service/user_dashboard';
 $route['provider-dashboard'] = 'user/service/provider_dashboard';
+$route['manager-dashboard'] = 'user/service/manager_dashboard';
+
 $route['user-settings'] = 'user/dashboard/user_settings';
 $route['change-password'] = 'user/dashboard/userchangepassword';
 $route['provider-change-password'] = 'user/dashboard/prochangepassword';
@@ -311,6 +313,7 @@ $route['user-order-payment'] = 'user/dashboard/user_order_payment';
 $route['product-payment'] = 'user/dashboard/product_payment';
 $route['provider-deposit-history'] = 'user/dashboard/provider_deposit_history';
 $route['provider-bookings'] = 'user/dashboard/provider_bookings';
+$route['manager-bookings'] = 'user/dashboard/manager_bookings';
 $route['offline-bookings'] = 'user/appointment/offline_bookings';
 $route['provider-settings'] = 'user/dashboard/provider_settings';
 $route['provider-wallet'] = 'user/dashboard/provider_wallet';

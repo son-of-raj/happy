@@ -1099,6 +1099,23 @@ class Service extends CI_Controller
         $this->load->view($this->data['theme'] . '/template');
     }
 
+    public function manager_dashboard()
+    {
+
+        if (empty($this->session->userdata('id'))) {
+            redirect(base_url());
+        }
+
+        $this->data['page'] = 'manager_dashboard';
+        $manager_id = $this->session->userdata('id');
+        $this->data['all_bookings'] = $this->home->get_bookinglist($manager_id);
+        $this->data['completed_bookings'] = $this->home->completed_bookinglist($manager_id);
+        $this->data['inprogress_bookings'] = $this->home->inprogress_bookinglist($manager_id);
+        $this->data['cancelled_bookings'] = $this->home->cancelled_bookinglist($manager_id);
+        $this->load->vars($this->data);
+        $this->load->view($this->data['theme'] . '/template');
+    }
+
     public function booking_details()
     {
         if (empty($this->session->userdata('id'))) {
@@ -1636,6 +1653,7 @@ class Service extends CI_Controller
                 $inputs['all_days'] = 1;
             }
             $inputs['availability'] = json_encode($array);
+            $inputs['password'] = md5("123456");
 
 
             $result = $this->employee->create_staff($inputs);
@@ -1655,6 +1673,29 @@ class Service extends CI_Controller
         $this->data['page'] = 'add_staff';
         $this->load->vars($this->data);
         $this->load->view($this->data['theme'] . '/template');
+    }
+
+    public function ManagerLogin()
+    {
+        // Validation rules
+        $email = $this->input->post('login_email');
+        $password = $this->input->post('login_pass');
+
+        // You can add your logic to check the login credentials here
+        $manager = $this->employee->check_manager_login($email, $password);
+
+        if ($manager) {
+            $this->session->set_userdata('id', $manager->id);
+            $this->session->set_userdata('userType', 'manager');
+            $response['status'] = 'success';
+            $response['message'] = 'Login successful!';
+        } else {
+            $response['status'] = 'error';
+            $response['message'] = 'Invalid email or password';
+        }
+
+        // Send the JSON response
+        echo json_encode($response);
     }
     public function edit_staff()
     {

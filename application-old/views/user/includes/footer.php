@@ -1197,6 +1197,7 @@ if ($login_type == 'email') {
 										</div>
 									</div>
 									<button class="login-btn" id="emaillogin_submit" type="submit"><?php echo (!empty($user_language[$user_selected]['lg_login'])) ? $user_language[$user_selected]['lg_login'] : $default_language['en']['lg_login']; ?></button>
+									
 								</div>
 							</div>
 						</div>
