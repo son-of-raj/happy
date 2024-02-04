@@ -3,11 +3,7 @@
 		redirect(base_url());
 	}
 	?>
- <style>
- 	img.avatar-img {
- 		height: 30px !important;
- 	}
- </style>
+
  <div class="col-xl-3 col-md-4 theiaStickySidebar">
 
  	<div class="panel-style">

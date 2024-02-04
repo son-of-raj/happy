@@ -1205,7 +1205,7 @@ if ($login_type == 'email') {
 											</div>
 										</div>
 									</div>
-									<span id="manager_error" class="mb-2"></span>
+									<span id="manager_error" class="mb-3"></span>
 									<button class="login-btn" id="managerLoginBtn" type="submit"><?php echo (!empty($user_language[$user_selected]['lg_login'])) ? $user_language[$user_selected]['lg_login'] : $default_language['en']['lg_login']; ?></button>
 								</div>
 							</div>
@@ -1215,6 +1215,55 @@ if ($login_type == 'email') {
 			</div>
 		</div>
 	</div>
+	<?php if ($this->session->userdata('userType') == 'manager') { ?>
+		<div class="modal account-modal fade" id="tab_change_mnager_pass" data-keyboard="false" data-backdrop="static">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header p-0 border-0">
+						<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div id="managerPassCngForm">
+							<div class="account-content">
+								<!-- <div class="alert alert-danger text-center" id="flash_error_message2"></div> -->
+								<div class="account-box">
+									<div class="login-right">
+										<div class="login-header">
+											<h3>Reset Password</h3>
+											<p class="text-muted"><?php echo $this->session->userdata('name'); ?></p>
+										</div>
+										<div class="form-group">
+											<label>New Password</label>
+											<div class="row">
+												<div class="col-12">
+													<input type="hidden" name="csrf_token_name" value="<?php echo $this->security->get_csrf_hash(); ?>" id="manager_pass_cng_csrf">
+													<input class="form-control" type="password" name="manager_cng_pass" id="manager_cng_pass" placeholder="Enter new password">
+													<span id="change_pass1" class="text-danger"></span>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label>Retype Password</label>
+											<div class="row">
+												<div class="col-12">
+													<input class="form-control " type="password" name="manager_cng_pass" id="retype_cng_pass" placeholder="Retype the password">
+													<span id="change_pass2" class="text-danger"></span>
+												</div>
+											</div>
+										</div>
+										<span id="manager_pass_cng_error" class="mb-2"></span>
+										<button class="login-btn" id="managerPassCngBtn" type="submit">Reset</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php } ?>
 
 	<div class="modal account-modal fade" id="tab_login_modal" data-keyboard="false" data-backdrop="static">
 		<div class="modal-dialog modal-dialog-centered">
@@ -1363,8 +1412,73 @@ if ($login_type == 'email') {
 <?php } ?>
 
 <script>
-	// Your JavaScript code
+	$(document).ready(function() {
+		// Your validation function
+		function validateChangeMangerPassForm() {
+			var newPassword = $('#manager_cng_pass').val();
+			var retypePassword = $('#retype_cng_pass').val();
+			$('#change_pass1').html('');
+			$('#change_pass2').html('');
 
+			// Add your validation logic here
+			if (newPassword.length < 8) {
+				$('#change_pass1').html('Password must be at least 8 characters long.');
+				return false;
+			}
+
+			if (newPassword !== retypePassword) {
+				$('#change_pass2').html('Passwords do not match.');
+				return false;
+			}
+
+			return true;
+		}
+
+		// Your Ajax function
+		function sendManagerPassChangeRequest() {
+			// Serialize form data
+			var pass = $('#retype_cng_pass').val();
+			var csrf_token = $('#manager_pass_cng_csrf').val();
+			alert(pass);
+
+			// Perform Ajax request using jQuery.ajax
+			$.ajax({
+				type: 'POST',
+				url: "<?php echo base_url('user/service/ManagerPassReset'); ?>",
+				data: {
+					pass: pass,
+					csrf_token_name: csrf_token,
+				},
+				dataType: "json",
+				success: function(response) {
+					swal({
+						title: response.status,
+						text: response.message,
+						icon: response.status,
+						button: "okay",
+						closeOnEsc: false,
+						closeOnClickOutside: false,
+					}).then(function() {
+						window.location.reload();
+					});
+				},
+				error: function(error) {
+					console.error('Error:', error);
+				}
+			});
+		}
+
+		// Add onclick event to a button or element
+		$('#managerPassCngBtn').click(function() {
+			if (validateChangeMangerPassForm()) {
+				// If validation passes, call the Ajax function
+				sendManagerPassChangeRequest();
+			}
+		});
+	});
+</script>
+
+<script>
 	$(document).ready(function() {
 		$("#managerLoginBtn").on("click", function() {
 			// Collect form data

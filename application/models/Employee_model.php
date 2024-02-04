@@ -32,6 +32,16 @@ class Employee_model extends CI_Model
 		}
 		return false;
 	}
+
+	public function manager_pass_chnage($id, $pass)
+	{
+		$this->db->where('id', $id);
+		$data['password'] = md5($pass);
+		return $this->db->update('employee_basic_details', $data);
+	}
+
+
+
 	public function create_staff_service($inputs)
 	{
 		if ($this->db->insert('employee_services_list', $inputs)) {

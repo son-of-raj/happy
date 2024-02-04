@@ -1,3 +1,8 @@
+<style>
+    img.avatar-img {
+        height: 30px !important;
+    }
+</style>
 <?php
 $type = $this->session->userdata('usertype');
 $userId = $this->session->userdata('id');
@@ -1025,7 +1030,11 @@ if ($type == 'user') {
                                         </div>
                                         <div class="user-text">
                                             <h6><?php echo $user_details['name']; ?></h6>
-                                            <p class="text-muted mb-0">Admin</p>
+                                            <p class="text-muted mb-0"><?php if ($this->session->userdata('userType') == 'manager') {
+                                                                            echo $this->session->userdata('name');
+                                                                        } else {
+                                                                            echo "Admin";
+                                                                        } ?></p>
                                         </div>
                                     </div>
                                     <a class="dropdown-item" href="<?php echo base_url(); ?><?php if ($this->session->userdata('userType') == 'manager') {
@@ -1033,6 +1042,10 @@ if ($type == 'user') {
                                                                                             } else {
                                                                                                 echo 'dashboard';
                                                                                             } ?>"><?php echo (!empty($user_language[$user_selected]['lg_Dashboard'])) ? $user_language[$user_selected]['lg_Dashboard'] : $default_language['en']['lg_Dashboard']; ?></a>
+                                    <?php if ($this->session->userdata('userType') == 'manager') { ?>
+                                        <a class="dropdown-item" href="javascript:void(0);" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#tab_change_mnager_pass">Reset Password</a>
+                                    <?php } ?>
+
                                     <a class="dropdown-item" href="<?php echo base_url() ?>logout"><?php echo (!empty($user_language[$user_selected]['lg_Logout'])) ? $user_language[$user_selected]['lg_Logout'] : $default_language['en']['lg_Logout']; ?></a>
                                 </div>
                             </li>

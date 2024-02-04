@@ -1687,11 +1687,32 @@ class Service extends CI_Controller
         if ($manager) {
             $this->session->set_userdata('id', $manager->id);
             $this->session->set_userdata('userType', 'manager');
+            $this->session->set_userdata('name', $manager->first_name);
             $response['status'] = 'success';
             $response['message'] = 'Login successful!';
         } else {
             $response['status'] = 'error';
             $response['message'] = 'Invalid email or password';
+        }
+
+        // Send the JSON response
+        echo json_encode($response);
+    }
+
+    public function ManagerPassReset()
+    {
+        $password = $this->input->post('pass');
+        $manager_id = $this->session->userdata('id');
+
+        // You can add your logic to check the login credentials here
+        $res = $this->employee->manager_pass_chnage($manager_id, $password);
+
+        if ($res) {
+            $response['status'] = 'success';
+            $response['message'] = 'Password Reset successfully!';
+        } else {
+            $response['status'] = 'error';
+            $response['message'] = 'Something went wrong. Try later.';
         }
 
         // Send the JSON response
