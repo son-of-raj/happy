@@ -830,6 +830,7 @@ class Service extends CI_Controller
 
     public function update_status_user()
     {
+
         extract($_POST);
         if (empty($this->session->userdata('id'))) {
             echo "3";

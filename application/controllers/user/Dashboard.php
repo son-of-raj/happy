@@ -965,8 +965,11 @@ class Dashboard extends CI_Controller
 
     // Get record count 
     $conditions['returnType'] = 'count';
-
-    $totalRec = $this->booking->getRows($conditions);
+    if ($this->session->userdata('userType') != 'manager') {
+      $totalRec = $this->booking->getRowsByManager($conditions);
+    } else {
+      $totalRec = $this->booking->getRows($conditions);
+    }
 
     // Pagination configuration 
     $config['target']      = '#dataList';
@@ -986,7 +989,14 @@ class Dashboard extends CI_Controller
       $conditions['where']['b.status'] = $status;
     }
 
-    $this->data['all_bookings'] = $this->booking->getRows($conditions);
+    if ($this->session->userdata('userType') == 'manager') {
+      $this->data['all_bookings'] = $this->booking->getRowsByManager($conditions);
+    } else {
+      $this->data['all_bookings'] = $this->booking->getRows($conditions);
+    }
+
+
+
 
     // Load the data list view 
     $this->load->view('user/home/ajax-data', $this->data, false);

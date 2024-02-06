@@ -30,6 +30,7 @@
                     </div>
                     <div class="col-auto">
                         <div class="sort-by">
+                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" id="csrf_token" value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <select class="form-control-sm custom-select searchFilter" id="status">
                                 <option value=''><?php echo (!empty($user_language[$user_selected]['lg_All'])) ? $user_language[$user_selected]['lg_All'] : $default_language['en']['lg_All']; ?></option>
                                 <option value="1"><?php echo (!empty($user_language[$user_selected]['lg_Pending'])) ? $user_language[$user_selected]['lg_Pending'] : $default_language['en']['lg_Pending']; ?></option>
@@ -292,7 +293,7 @@
                                             <a href="<?php echo base_url() ?>user-chat/booking-new-chat?book_id=<?php echo $bookings['id'] ?>" class="btn btn-sm bg-info-light">
                                                 <i class="far fa-eye"></i> <?php echo (!empty($user_language[$user_selected]['lg_chat'])) ? $user_language[$user_selected]['lg_chat'] : $default_language['en']['lg_chat']; ?>
                                             </a>
-                                            <a href="javascript:;" class="btn btn-sm bg-danger-light myCancel <?php echo $allowcancel; ?>" data-bs-toggle="modal" data-bs-target="#myCancel" data-id="<?php echo $bookings['id'] ?>" data-providerid="<?php echo $bookings['provider_id'] ?>" data-userid="<?php echo $bookings['user_id'] ?>" data-serviceid="<?php echo $bookings['service_id'] ?>">
+                                            <a href="javascript:;" class="btn btn-sm bg-danger-light myCancel <?php echo $allowcancel; ?>" id="myCancelBtn" data-bs-toggle="modal" data-bs-target="#myCancel" data-id="<?php echo $bookings['id'] ?>" data-providerid="<?php echo $bookings['provider_id'] ?>" data-userid="<?php echo $bookings['user_id'] ?>" data-serviceid="<?php echo $bookings['service_id'] ?>">
                                                 <i class="fas fa-times"></i> <?php echo (!empty($user_language[$user_selected]['lg_cancel_service'])) ? $user_language[$user_selected]['lg_cancel_service'] : $default_language['en']['lg_cancel_service']; ?>
                                             </a>
 
@@ -305,7 +306,7 @@
                                             <a href="javascript:;" class="btn btn-sm bg-success-light update_pro_booking_status" data-id="<?php echo  $bookings['id']; ?>" data-status="2" data-rowid="<?php echo  $pending; ?>" data-review="2">
                                                 <i class="fas fa-check"></i> <?php echo (!empty($user_language[$user_selected]['lg_user_res_accept'])) ? $user_language[$user_selected]['lg_user_res_accept'] : $default_language['en']['lg_user_res_accept']; ?>
                                             </a>
-                                            <a href="javascript:;" class="btn btn-sm bg-danger-light myCancel <?php echo $allowcancel; ?>" data-bs-toggle="modal" data-bs-target="#myCancel" data-id="<?php echo $bookings['id'] ?>" data-providerid="<?php echo $bookings['provider_id'] ?>" data-userid="<?php echo $bookings['user_id'] ?>" data-serviceid="<?php echo $bookings['service_id'] ?>">
+                                            <a href="javascript:;" class="btn btn-sm bg-danger-light myCancel <?php echo $allowcancel; ?>" id="myCancelBtn" data-bs-toggle="modal" data-bs-target="#myCancel" data-id="<?php echo $bookings['id'] ?>" data-providerid="<?php echo $bookings['provider_id'] ?>" data-userid="<?php echo $bookings['user_id'] ?>" data-serviceid="<?php echo $bookings['service_id'] ?>">
                                                 <i class="fas fa-times"></i> <?php echo (!empty($user_language[$user_selected]['lg_cancel_service'])) ? $user_language[$user_selected]['lg_cancel_service'] : $default_language['en']['lg_cancel_service']; ?>
                                             </a>
                                         <?php } elseif ($bookings['status'] == 3) {

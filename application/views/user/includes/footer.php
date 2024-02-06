@@ -1478,6 +1478,66 @@ if ($login_type == 'email') {
 	});
 </script>
 
+
+<script>
+	var base_url = $("#base_url").val();
+	var csrf_token = $("#csrf_token").val();
+	$(".searchFilter").on("click", function() {
+		searchFilter();
+	});
+
+	function searchFilter(page_num) {
+		page_num = page_num ? page_num : 0;
+		var status = $("#status").val();
+		var sortBy = $("#sortBy").val();
+		$.ajax({
+			type: "POST",
+			url: base_url + "user/dashboard/ajaxPaginationData",
+			data: "page=" +
+				page_num +
+				"&status=" +
+				status +
+				"&sortBy=" +
+				sortBy +
+				"&csrf_token_name=" +
+				csrf_token,
+			beforeSend: function() {
+				$(".loading").show();
+			},
+			success: function(html) {
+				$("#dataList").html(html);
+				$(".loading").fadeOut("slow");
+			},
+		});
+	}
+</script>
+<script>
+	$(".myCancel").on("click", function() {
+		$("#cancel_review").val("");
+		$("#booking_id").val("");
+		$("#provider_id").val("");
+		$("#user_id").val("");
+		$("#service_id").val("");
+		var booking_id = $(this).attr("data-id");
+		var provider_id = $(this).attr("data-providerid");
+		var user_id = $(this).attr("data-userid");
+		var service_id = $(this).attr("data-serviceid");
+
+		$("#cancel_booking_id").val(function() {
+			return this.value + booking_id;
+		});
+		$("#cancel_provider_id").val(function() {
+			return this.value + provider_id;
+		});
+		$("#cancel_user_id").val(function() {
+			return this.value + user_id;
+		});
+		$("#cancel_service_id").val(function() {
+			return this.value + service_id;
+		});
+	});
+</script>
+
 <script>
 	$(document).ready(function() {
 		$("#managerLoginBtn").on("click", function() {

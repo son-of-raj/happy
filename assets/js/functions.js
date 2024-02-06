@@ -1060,30 +1060,30 @@
       });
     });
 
-    $(".myCancel").on("click", function () {
-      $("#cancel_review").val("");
-      $("#booking_id").val("");
-      $("#provider_id").val("");
-      $("#user_id").val("");
-      $("#service_id").val("");
-      var booking_id = $(this).attr("data-id");
-      var provider_id = $(this).attr("data-providerid");
-      var user_id = $(this).attr("data-userid");
-      var service_id = $(this).attr("data-serviceid");
+    // $("#myCancelBtn").on("click", function () {
+    //   $("#cancel_review").val("");
+    //   $("#booking_id").val("");
+    //   $("#provider_id").val("");
+    //   $("#user_id").val("");
+    //   $("#service_id").val("");
+    //   var booking_id = $(this).attr("data-id");
+    //   var provider_id = $(this).attr("data-providerid");
+    //   var user_id = $(this).attr("data-userid");
+    //   var service_id = $(this).attr("data-serviceid");
 
-      $("#cancel_booking_id").val(function () {
-        return this.value + booking_id;
-      });
-      $("#cancel_provider_id").val(function () {
-        return this.value + provider_id;
-      });
-      $("#cancel_user_id").val(function () {
-        return this.value + user_id;
-      });
-      $("#cancel_service_id").val(function () {
-        return this.value + service_id;
-      });
-    });
+    //   $("#cancel_booking_id").val(function () {
+    //     return this.value + booking_id;
+    //   });
+    //   $("#cancel_provider_id").val(function () {
+    //     return this.value + provider_id;
+    //   });
+    //   $("#cancel_user_id").val(function () {
+    //     return this.value + user_id;
+    //   });
+    //   $("#cancel_service_id").val(function () {
+    //     return this.value + service_id;
+    //   });
+    // });
 
     var timeout = 3000; // in miliseconds (3*1000)
     $("#flash_succ_message").delay(timeout).fadeOut(500);
@@ -1693,6 +1693,8 @@
 
     function update_user_cancel_booking_status(bookid, status, rowid, review) {
       $("#myCancel").modal("hide");
+
+      console.log(bookid, status, rowid, review);
       $.ajax({
         url: base_url + "update-status-user",
         data: {
