@@ -146,7 +146,7 @@
                                                 $class = 'bg-success';
                                             }
                                             if ($bookings['status'] == 7) {
-                                                $badge = 'Cancelled by Provider';
+                                                $badge = 'Cancelled by Provider/Manager';
                                                 $class = 'bg-danger';
                                             }
                                             $rewardStatus = '';

@@ -1215,7 +1215,7 @@ if ($login_type == 'email') {
 			</div>
 		</div>
 	</div>
-	<?php if ($this->session->userdata('userType') == 'manager') { ?>
+	<?php if ($this->session->userdata('usertype') == 'manager') { ?>
 		<div class="modal account-modal fade" id="tab_change_mnager_pass" data-keyboard="false" data-backdrop="static">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">

@@ -1466,10 +1466,11 @@
         return false;
       }
       var user_type = $("#user_type").val();
-      if (user_type == "provider" || user_type == "freelancer") {
-        update_pro_cancel_booking_status(booking_id, 7, 0, review);
+      // if (user_type == "provider" || user_type == "freelancer") {
+      if (user_type == "user") {
+        update_pro_cancel_booking_status(booking_id, 5, 0, review);
       } else {
-        update_user_cancel_booking_status(booking_id, 5, 0, review);
+        update_user_cancel_booking_status(booking_id, 7, 0, review);
       }
     }
 

@@ -111,6 +111,7 @@ class Service_model extends CI_Model
 
     $this->db->where('service_id', $service_id);
     $this->db->where('status!=', 5);
+    $this->db->where('status!=', 7);
 
     return $this->db->get('book_service')->result_array();
   }
