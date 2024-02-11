@@ -14,6 +14,7 @@
   function searchFilter(page_num) {
     page_num = page_num ? page_num : 0;
     var status = $("#status").val();
+    console.log(status);
     var sortBy = $("#sortBy").val();
     $.ajax({
       type: "POST",

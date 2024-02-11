@@ -293,3 +293,4 @@ if (!empty($all_bookings)) {
 <?php
 echo $this->ajax_pagination->create_links();
 ?>
+<script src="<?php echo base_url(); ?>assets/js/functions.js"></script>

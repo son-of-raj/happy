@@ -1570,6 +1570,81 @@ if ($login_type == 'email') {
 		});
 	});
 </script>
+
+<script>
+	$("#bookingdate").flatpickr({
+		mode: "range",
+		dateFormat: "Y-m-d",
+		minDate: "today",
+		onClose: function(selectedDates, dateStr, instance) {
+			if (selectedDates.length > 0) {
+				var datesArray = selectedDates.map(function(date) {
+					return date.toLocaleDateString("en-US");
+				});
+
+				var dataString = "dates=" + JSON.stringify(datesArray);
+				var provider_id = $(".submit_service_book").attr("data-provider");
+				var service_id = $(".submit_service_book").attr("data-id");
+				$.ajax({
+					url: base_url + "user/service/service_availability/",
+					data: {
+						dates: JSON.stringify(datesArray),
+						provider_id: provider_id,
+						service_id: service_id,
+						csrf_token_name: csrf_token,
+					},
+					type: "POST",
+					success: function(response) {
+						var slots = JSON.parse(response);
+						$("#from_time").find("option").remove();
+						slots.forEach(function(slot) {
+							var option = $("<option/>");
+							option.attr("value", slot).text(slot);
+							$("#from_time").append(option);
+						});
+					},
+				});
+			}
+		},
+	});
+
+	$("#offlineBookingdate").flatpickr({
+		mode: "range",
+		dateFormat: "Y-m-d",
+		minDate: "today",
+		onClose: function(selectedDates, dateStr, instance) {
+			if (selectedDates.length > 0) {
+				var datesArray = selectedDates.map(function(date) {
+					return date.toLocaleDateString("en-US");
+				});
+
+				var dataString = "dates=" + JSON.stringify(datesArray);
+				var provider_id = 0;
+				var service_id = $("#offline_service_id").val();
+				$.ajax({
+					url: base_url + "user/service/service_availability/",
+					data: {
+						dates: JSON.stringify(datesArray),
+						provider_id: provider_id,
+						service_id: service_id,
+						csrf_token_name: csrf_token,
+					},
+					type: "POST",
+					success: function(response) {
+						var slots = JSON.parse(response);
+						$("#from_time").find("option").remove();
+						slots.forEach(function(slot) {
+							var option = $("<option/>");
+							option.attr("value", slot).text(slot);
+							$("#from_time").append(option);
+						});
+					},
+				});
+			}
+		},
+	});
+</script>
+
 <!-- Cancel Modal -->
 <div id="cancelModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-dialog-centered">

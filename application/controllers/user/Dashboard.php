@@ -895,6 +895,7 @@ class Dashboard extends CI_Controller
     $config['total_rows']  = $totalRec;
     $config['per_page']    = $this->perPage;
 
+
     // Initialize pagination library 
     $this->ajax_pagination->initialize($config);
 
@@ -903,6 +904,7 @@ class Dashboard extends CI_Controller
       'limit' => $this->perPage
     );
     $this->data['all_bookings'] = $this->booking->getRows($conditions);
+
 
     // Load the list page view 
     $this->load->vars($this->data);
@@ -965,7 +967,7 @@ class Dashboard extends CI_Controller
 
     // Get record count 
     $conditions['returnType'] = 'count';
-    if ($this->session->userdata('userType') != 'manager') {
+    if ($this->session->userdata('userType') == 'manager') {
       $totalRec = $this->booking->getRowsByManager($conditions);
     } else {
       $totalRec = $this->booking->getRows($conditions);
