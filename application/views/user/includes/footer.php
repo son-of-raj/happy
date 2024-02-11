@@ -1066,7 +1066,7 @@ if ($module == 'home') { ?>
 <?php if ($this->uri->segment(1) == "provider-availability") { ?>
 	<script src="<?php echo base_url(); ?>assets/js/provider_availability.js"></script>
 <?php } ?>
-<?php if ($this->uri->segment(1) == "provider-bookings") { ?>
+<?php if ($this->uri->segment(1) == "provider-bookings" || $this->uri->segment(1) == "manager-bookings") { ?>
 	<script src="<?php echo $base_url; ?>assets/js/provider_bookings.js"></script>
 <?php } ?>
 <?php if ($this->uri->segment(1) == "provider-settings") { ?>
@@ -1478,39 +1478,6 @@ if ($login_type == 'email') {
 	});
 </script>
 
-
-<script>
-	var base_url = $("#base_url").val();
-	var csrf_token = $("#csrf_token").val();
-	$(".searchFilter").on("click", function() {
-		searchFilter();
-	});
-
-	function searchFilter(page_num) {
-		page_num = page_num ? page_num : 0;
-		var status = $("#status").val();
-		var sortBy = $("#sortBy").val();
-		$.ajax({
-			type: "POST",
-			url: base_url + "user/dashboard/ajaxPaginationData",
-			data: "page=" +
-				page_num +
-				"&status=" +
-				status +
-				"&sortBy=" +
-				sortBy +
-				"&csrf_token_name=" +
-				csrf_token,
-			beforeSend: function() {
-				$(".loading").show();
-			},
-			success: function(html) {
-				$("#dataList").html(html);
-				$(".loading").fadeOut("slow");
-			},
-		});
-	}
-</script>
 <script>
 	$(".myCancel").on("click", function() {
 		$("#cancel_review").val("");
