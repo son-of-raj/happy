@@ -31,7 +31,7 @@ if (!empty($all_bookings)) {
 		$service_url = base_url() . 'service-preview/' . $servicetitle . '?sid=' . md5($bookings['service_id']);
 		$user_currency_code = '';
 		$userId = $this->session->userdata('id');
-		if (!empty($userId)) {
+		if (!empty($userId) && $this->session->userdata('userType') != 'manager') {
 			$service_amount = $bookings['amount'];
 			$type = $this->session->userdata('usertype');
 			if ($type == 'user') {
