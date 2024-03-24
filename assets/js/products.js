@@ -1443,8 +1443,20 @@ function cancel_order() {
         cancel_reason: cancel_reason,
       },
       success: function (response) {
-        toastnotification("success", "Removed Successfully", "", "", "");
-        window.location.reload();
+        var obj = $.parseJSON(response);
+        // toastnotification(obj.error ? "error" : "success", obj.msg, "", "", "");
+        swal({
+          title: obj.error
+            ? "Failed to cancel properly"
+            : "Successfully Cancelled",
+          text: obj.msg,
+          icon: obj.error ? "error" : "success",
+          button: "okay",
+          closeOnEsc: false,
+          closeOnClickOutside: false,
+        }).then(function () {
+          window.location.reload();
+        });
       },
     });
   } else {

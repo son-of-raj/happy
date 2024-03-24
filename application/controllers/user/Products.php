@@ -5,6 +5,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require_once 'vendor/autoload.php';
 require_once 'vendor/braintree/braintree_php/lib/Braintree.php';
 require_once 'vendor/stripe/stripe-php/init.php';
+
+use Razorpay\Api\Api;
 //Vendor
 class Products extends CI_Controller
 {
@@ -1340,13 +1342,70 @@ class Products extends CI_Controller
             $not_data = array('sender' => $sender, 'receiver' => $receiver, 'message' => $message, 'status' => 1, 'created_at' => date("Y-m-d H:i:s"), 'utc_date_time' => utc_date_conversion(date('Y-m-d H:i:s')));
             $this->db->insert('notification_table', $not_data);
             //update delivery status
-            $this->db->where('id', $inp['cart_id']);
-            $this->db->update('product_cart', ['delivery_status' => $delivery_status, 'cancel_reason' => $inp['cancel_reason']]);
+
             $this->db->where('id', $inp['order_id']);
-            $this->db->update('product_order', ['cancelled_status' => 1]);
-            $result = array('error' => false, 'msg' => 'success');
+            $res = $this->db->get('product_order');
+            if ($res->num_rows() > 0) {
+                $order_info = $res->row();
+                if ($order_info->payment_gway == 'razorpay') {
+                    $ref_res = $this->razorpay_refund_amt($order_info);
+                    if ($ref_res) {
+                        $this->db->where('id', $inp['cart_id']);
+                        $this->db->update('product_cart', ['delivery_status' => $delivery_status, 'cancel_reason' => $inp['cancel_reason']]);
+                        $this->db->where('id', $inp['order_id']);
+                        $response = $this->db->update('product_order', ['cancelled_status' => 1]);
+                        if ($response) {
+                            $result = array('error' => false, 'msg' => 'success with refund');
+                        } else {
+                            $result = array('error' => true, 'msg' => 'Warning: refunded but not updated status');
+                        }
+                    } else {
+                        $result = array('error' => true, 'msg' => 'Due to refund issue');
+                    }
+                } else {
+                    $this->db->where('id', $inp['cart_id']);
+                    $this->db->update('product_cart', ['delivery_status' => $delivery_status, 'cancel_reason' => $inp['cancel_reason']]);
+                    $this->db->where('id', $inp['order_id']);
+                    $response = $this->db->update('product_order', ['cancelled_status' => 1]);
+                    if ($response) {
+                        $result = array('error' => false, 'msg' => 'success fully cancelled');
+                    } else {
+                        $result = array('error' => true, 'msg' => 'Failed to cancel');
+                    }
+                }
+            } else {
+                $result = array('error' => true, 'msg' => 'failed');
+            }
         }
         echo json_encode($result);
+    }
+
+
+    private function razorpay_refund_amt($order_info)
+    {
+        if ($order_info->transaction_id) {
+            $paymentId = $order_info->transaction_id;
+            $refundAmount = $order_info->total_amt * 100;
+
+            $razorpayKeyId = settingValue('razor_option') == 1 ? settingValue('razorpay_apikey') : settingValue('live_razorpay_apikey');
+            $razorpayKeySecret = settingValue('razor_option') == 1 ? settingValue('razorpay_secret_key') : settingValue('live_razorpay_secret_key');
+
+            $api = new Api($razorpayKeyId, $razorpayKeySecret);
+
+            try {
+                $refund = $api->payment->fetch($paymentId)->refund(array('amount' => $refundAmount));
+                if ($refund->id) {
+                    $data['refund_id'] =  $refund->id;
+                    $this->db->where('id', $order_info->id);
+                    return $this->db->update('product_order', $data);
+                }
+                return false;
+            } catch (\Exception $e) {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
     public function order_cancel_wallet($cart_id)
     {

@@ -842,7 +842,7 @@ class Service extends CI_Controller
 
 
 
-    public function booking_amount_refund_rq($booking_id)
+    private function booking_amount_refund_rq($booking_id)
     {
 
         $book_info = $this->service->get_booking_details($booking_id);
