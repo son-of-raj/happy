@@ -42,35 +42,35 @@
                                 <div>
                                     <?php if ($list['gateway_type'] == 'sandbox') { ?>
                                         <div class="radio radio-inline">
-                                            <input id="sandbox" name="gateway_type" value="sandbox" type="radio" checked >
+                                            <input id="sandbox" name="gateway_type" value="sandbox" type="radio" checked>
                                             <label for="sandbox"> Sandbox </label>
                                         </div>
-                                    <?php } ?>	
-                                    <?php if ($list['gateway_type'] == 'live') { ?>	
+                                    <?php } ?>
+                                    <?php if ($list['gateway_type'] == 'live') { ?>
                                         <div class="radio radio-inline">
-                                            <input id="livepaypal" name="gateway_type" value='live' type="radio"  checked>
+                                            <input id="livepaypal" name="gateway_type" value='live' type="radio" checked>
                                             <label for="livepaypal"> Live </label>
                                         </div>
-                                    <?php } ?>	
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Gateway Name</label>
-                                <input  type="text" id="gateway_name" name="gateway_name"  value="<?php if (!empty($list['gateway_name'])) {
-                                        echo $list['gateway_name'];
-                                    } ?>" required class="form-control" placeholder="Gateway Name">
+                                <input type="text" id="gateway_name" name="gateway_name" value="<?php if (!empty($list['gateway_name'])) {
+                                                                                                    echo $list['gateway_name'];
+                                                                                                } ?>" required class="form-control" placeholder="Gateway Name">
                             </div>
                             <div class="form-group">
                                 <label>API Key</label>
                                 <input type="text" id="api_key" name="api_key" value="<?php if (!empty($list['api_key'])) {
-                                        echo $list['api_key'];
-                                    } ?>" required class="form-control">
+                                                                                            echo $list['api_key'];
+                                                                                        } ?>" required class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Rest Key</label>
                                 <input type="text" id="value" name="value" value="<?php if (!empty($list['value'])) {
-                                        echo $list['value'];
-                                    } ?>" required class="form-control">
+                                                                                        echo $list['value'];
+                                                                                    } ?>" required class="form-control">
                             </div>
                             <div class="mt-4">
                                 <button class="btn btn-primary" name="form_submit" value="submit" type="submit">Submit</button>
