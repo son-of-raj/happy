@@ -298,8 +298,12 @@
                                                 <li><span><?php echo (!empty($user_language[$user_selected]['lg_Location'])) ? $user_language[$user_selected]['lg_Location'] : $default_language['en']['lg_Location']; ?></span> <?php echo $bookings['location'] ?></li>
                                                 <li><span>Manager</span> <?php echo ($stffname) ? $stffname : '-'; ?></li>
                                                 <li><span><?php echo (!empty($user_language[$user_selected]['lg_Phone'])) ? $user_language[$user_selected]['lg_Phone'] : $default_language['en']['lg_Phone']; ?></span> <?php echo $provider_info['mobileno'] ?></li>
+                                                <li><span> Pay Method<?php echo (!empty($user_language[$user_selected]['lg_paytype'])) ? $user_language[$user_selected]['lg_paytype'] : $default_language['en']['lg_paytype']; ?></span> <?php echo $bookings['paytype']; ?></li>
+
+                                                <?php if ($bookings['refund_id']) { ?>
+                                                    <li><span>Refund Id</span> <?php echo ($bookings['refund_id']) ? $bookings['refund_id'] : '-'; ?></li>
+                                                <?php } ?>
                                                 <li>
-                                                <li><span><?php echo (!empty($user_language[$user_selected]['lg_paytype'])) ? $user_language[$user_selected]['lg_paytype'] : $default_language['en']['lg_paytype']; ?></span> <?php echo $bookings['paytype']; ?></li>
                                                 <li>
                                                     <a class="direction_map" target="_blank" href="http://maps.google.com/maps?q=<?php echo $serloct; ?>/booking=<?php echo $bookings['id']; ?>">
                                                         <small><i class="fas fa-map-marker-alt me-2"></i><?php echo (!empty($user_language[$user_selected]['lg_GoogleMap_Link'])) ? $user_language[$user_selected]['lg_GoogleMap_Link'] : $default_language['en']['lg_GoogleMap_Link']; ?></small></a>

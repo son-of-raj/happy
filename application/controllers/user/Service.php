@@ -2,6 +2,10 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+require './vendor/autoload.php';
+
+use Razorpay\Api\Api;
+
 class Service extends CI_Controller
 {
 
@@ -740,7 +744,11 @@ class Service extends CI_Controller
         $user_data = $this->db->where('id', $old_booking_status->user_id)->from('users')->get()->row_array();
         if ($result) {
             $message = 'Booking updated successfully';
-
+            $refund_msg = '';
+            if ($book_details['status'] == 5) {
+                $refunded = $this->booking_amount_refund_rq($this->input->post('booking_id'));
+                $refund_msg = $refunded ? "[Refunded ID : " . $refunded . "]" : " [Refund request faild]";
+            }
             if ($book_details['status'] == 2) {
 
                 $token = $this->session->userdata('chat_token');
@@ -763,6 +771,8 @@ class Service extends CI_Controller
 
             if ($book_details['status'] == 7) {
                 $token = $this->session->userdata('chat_token');
+                $refunded = $this->booking_amount_refund_rq($this->input->post('booking_id'));
+                $refund_msg = $refunded ? "[Refunded ID : " . $refunded . "]" : " [Refund request faild]";
                 $sesstxt = '';
                 if ($old_booking_status->autoschedule_session_no > 1) {
                     $sesstxt = ' (Session - ' . $old_booking_status->autoschedule_session_no . ')"';
@@ -789,6 +799,8 @@ class Service extends CI_Controller
                 }
                 /* Cancel More Than One Services Booking for Myself/Guests, If Exists */
             }
+
+            $success_message = $success_message . ' ' . $refund_msg;
 
 
             //Sending mail after changing booking status
@@ -827,6 +839,45 @@ class Service extends CI_Controller
             echo "2";
         }
     }
+
+
+
+    public function booking_amount_refund_rq($booking_id)
+    {
+
+        $book_info = $this->service->get_booking_details($booking_id);
+        if ($book_info['paytype'] == 'razorpay') {
+            $refunded_id =  $this->razorpay_refund_amt($book_info);
+            if ($refunded_id) {
+                $this->service->update_booking_refund_id($booking_id, $refunded_id) ? $refunded_id : false;
+            }
+            return false;
+        }
+    }
+
+    private function razorpay_refund_amt($book_info)
+    {
+        if ($book_info['paid_tokenid']) {
+            $paymentId = $book_info['paid_tokenid'];
+            $refundAmount = $book_info['booking_amnt'] * 100;
+
+            $razorpayKeyId = settingValue('razor_option') == 1 ? settingValue('razorpay_apikey') : settingValue('live_razorpay_apikey');
+            $razorpayKeySecret = settingValue('razor_option') == 1 ? settingValue('razorpay_secret_key') : settingValue('live_razorpay_secret_key');
+
+            $api = new Api($razorpayKeyId, $razorpayKeySecret);
+
+            try {
+                $refund = $api->payment->fetch($paymentId)->refund(array('amount' => $refundAmount));
+                return $refund->id;
+            } catch (\Exception $e) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+
 
     public function update_status_user()
     {
@@ -1013,8 +1064,8 @@ class Service extends CI_Controller
         }
 
         foreach ($date_range as $date) {
-            $slot1 = $date->format('Y-m-d') . ', 12:00 AM - 12:00 PM';
-            $slot2 = $date->format('Y-m-d') . ', 12:00 PM - 12:00 AM';
+            $slot1 = $date->format('Y-m-d') . ', 12:00 AM - 12:00 PM, Morning';
+            $slot2 = $date->format('Y-m-d') . ', 12:00 PM - 12:00 AM, Evening';
 
             $slots[] = $slot1;
             $slots[] = $slot2;

@@ -350,11 +350,13 @@ $get_coupon_code = $this->db->where('status', 1)
 
 				<!-- Stripe Details -->
 				<input type="hidden" id="stripe_key" value="<?php echo $stripe_key; ?>">
+				<input type="hidden" id="razorpay_key" value="<?php echo $razorpay_key; ?>">
 				<input type="hidden" id="logo_front" value="<?php echo $web_log; ?>">
-				<input type="hidden" id="booking_amount" value="<?php echo $total_payable; ?>">
+				<input type="hidden" id="booking_amount" value="<?php echo $booking_amount; ?>">
 				<input type="hidden" id="booking_currency" value="<?php echo $user_currency_codeval; ?>">
 				<input type="hidden" id="booking_id" value="<?php echo $bookings['id']; ?>">
 				<button id="my_stripe_payyment" style="display: none;">Purchase</button>
+				<button id="rzp-button1" style="display: none;">Pay</button>
 				<!-- Stripe Details -->
 
 			</div>

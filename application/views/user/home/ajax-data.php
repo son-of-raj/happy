@@ -223,7 +223,11 @@ if (!empty($all_bookings)) {
 							</li>
 							<li><span><?php echo (!empty($user_language[$user_selected]['lg_Phone'])) ? $user_language[$user_selected]['lg_Phone'] : $default_language['en']['lg_Phone']; ?></span> <?php echo $user_info['mobileno'] ?></li>
 							<li><span>Manager</span> <?php echo ($stffname) ? $stffname : '-'; ?></li>
-							<li><span><?php echo (!empty($user_language[$user_selected]['lg_paytype'])) ? $user_language[$user_selected]['lg_paytype'] : $default_language['en']['lg_paytype']; ?></span> <?php echo $bookings['paytype']; ?></li>
+							<li><span> Pay Method<?php echo (!empty($user_language[$user_selected]['lg_paytype'])) ? $user_language[$user_selected]['lg_paytype'] : $default_language['en']['lg_paytype']; ?></span> <?php echo $bookings['paytype']; ?></li>
+
+							<?php if ($bookings['refund_id']) { ?>
+								<li><span>Refund Id</span> <?php echo ($bookings['refund_id']) ? $bookings['refund_id'] : '-'; ?></li>
+							<?php } ?>
 							<li>
 						</ul>
 					</div>

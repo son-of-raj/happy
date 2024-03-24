@@ -113,7 +113,7 @@ $durintxt = (!empty($user_language[$user_selected]['lg_mins'])) ? $user_language
 
 
 
-                            <div class="col-lg-12 d-none">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label><?php echo (!empty($user_language[$user_selected]['lg_Service_Location'])) ? $user_language[$user_selected]['lg_Service_Location'] : $default_language['en']['lg_Service_Location']; ?> <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="service_location" id="service_location" value="<?php echo $services['service_location'] ?>">

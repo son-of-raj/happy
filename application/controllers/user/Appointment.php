@@ -494,6 +494,12 @@ class Appointment extends CI_Controller
 		} else {
 			$this->data['stripe_key'] = settingValue('live_publishable_key');
 		}
+
+		if ($this->data['razor_option_status'] == 1) {
+			$this->data['razorpay_key'] = settingValue('razorpay_apikey');
+		} else {
+			$this->data['razorpay_key'] = settingValue('live_razorpay_apikey');
+		}
 		$this->data['web_log'] = (settingValue('logo_front')) ? base_url() . settingValue('logo_front') : base_url() . 'assets/img/logo.png';
 
 		$this->data['map_key'] = $map_key;
@@ -1105,6 +1111,90 @@ class Appointment extends CI_Controller
 		}
 		exit;
 	}
+
+
+	public function book_razorpay_payment()
+	{
+		$postdata = $this->input->post();
+		// Convert amount to paise
+		$amt = $postdata['amount'] / 100;
+
+		// Extract necessary data
+		$booking_id = $postdata['booking_id'];
+		$couponid = $postdata['couponid'];
+
+		// Fetch service details
+		$service = $this->db->where('id', $booking_id)->get('book_service')->row_array();
+		$service_id = $service['service_id'];
+
+		// Prepare inputs for update
+		$inputs = array(
+			'status' => 2,
+			'reason' => '',
+			'final_amount' => $amt,
+			'paid_tokenid' => $postdata['id'],
+			'paytype' => 'razorpay'
+		);
+
+		// Update booking status
+		$this->db->update('book_service', $inputs, array("id" => $booking_id));
+
+		// Update coupon details if applicable
+		if (!empty($couponid) && $couponid > 0) {
+			$cinputs = array('couponid' => $couponid);
+			$this->db->update('book_service', $cinputs, array("id" => $booking_id));
+		}
+
+		// Update reward status if applicable
+		$rewardid = $service['rewardid'];
+		if (!empty($rewardid) && $rewardid > 0) {
+			$this->db->query("UPDATE `service_rewards` SET `status` = 3 WHERE `id` = '" . $rewardid . "' and user_id = " . $this->session->userdata('id') . " and service_id = " . $service_id);
+		}
+
+		// Update revenue details
+		if ($inputs['cod'] == 2) {
+			$revenueInsert = array(
+				'date' => date('Y-m-d'),
+				'provider' => $service['provider_id'],
+				'service_id' => $service_id,
+				'booking_id' => $booking_id,
+				'user' => $this->session->userdata('id'),
+				'currency_code' => $service['currency_code'],
+				'amount' => $service['service_amount'],
+				'commission' => settingValue('commission'), // Adjust as per your commission settings
+				'vat' => settingValue('vat'), // Adjust as per your VAT settings
+				'offersid' => $service['offersid'],
+				'couponid' => $service['couponid'],
+				'rewardid' => $service['rewardid'],
+				'revenue_for' => 'Service Booking'
+			);
+			$this->db->insert('revenue', $revenueInsert);
+		}
+
+		// Handle coupon count update
+		if (!empty($couponid) && $couponid > 0) {
+			$couponqry = $this->db->select('user_limit, user_limit_count, used_user_id')->where('id', $couponid)->get('service_coupons')->row_array();
+			$used_coupon = $couponqry['used_user_id'];
+			$userids = $this->session->userdata('id');
+			if (!empty($used_coupon)) {
+				$userids .= ',' . $used_coupon;
+			}
+
+			$cno = intval($couponqry['user_limit_count']) + 1;
+			$this->db->query("UPDATE `service_coupons` SET `user_limit_count` = '" . $cno . "', `used_user_id` = '" . $userids . "' WHERE `id` = '" . $couponid . "'");
+
+			if ($couponqry['user_limit'] != 0 && $couponqry['user_limit'] == $cno) {
+				$this->db->query("UPDATE `service_coupons` SET `status` = 3 WHERE `id` = '" . $couponid . "'");
+			}
+		}
+
+		// Send notifications and emails
+
+		// Return success response
+		echo json_encode(['success' => true]);
+		exit;
+	}
+
 
 	public function paypal_payment($bookingid, $amount)
 	{

@@ -104,6 +104,7 @@ $Defcolor = $ColorList[4]['status'];
 
     <script src="https://checkout.stripe.com/checkout.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <?php if ($this->uri->segment(1) == "provider-subscription" || $this->uri->segment(1) == "shop" || $this->uri->segment(1) == "my-shop-inactive" || $this->uri->segment(1) == "service-checkout" || $this->uri->segment(1) == "checkout" || $this->uri->segment(1) == "order-payment") { ?>
         <!-- Moyasar Styles -->

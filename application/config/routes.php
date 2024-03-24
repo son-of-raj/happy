@@ -325,6 +325,7 @@ $route['create-availability'] = 'user/dashboard/create_availability';
 $route['user-bookings'] = 'user/dashboard/user_bookings';
 $route['logout'] = 'user/login/logout';
 
+
 /*
  * Multiple Languages
  */

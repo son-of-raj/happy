@@ -102,7 +102,7 @@ $usrbtntxt = (!empty($user_language[$user_selected]['lg_Send_To_User'])) ? $user
                                 </div>
                             </div>
 
-                            <div class="col-lg-12 d-none">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label><?php echo (!empty($user_language[$user_selected]['lg_Service_Location'])) ? $user_language[$user_selected]['lg_Service_Location'] : $default_language['en']['lg_Service_Location']; ?> <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="service_location" id="service_location" required>

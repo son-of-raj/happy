@@ -135,6 +135,13 @@ class Service_model extends CI_Model
     return $this->db->where('id', $booking_id)->get('book_service')->row_array();
   }
 
+  public function update_booking_refund_id($booking_id, $refund_id)
+  {
+    $data['refund_id'] = $refund_id;
+    $this->db->where('id', $booking_id);
+    return $this->db->update('book_service', $data);
+  }
+
   public function update_bookingstatus($book_details, $where)
   {
 
